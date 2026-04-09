@@ -1,6 +1,6 @@
 FROM debian:bookworm-slim
 
-ARG MDBOOK_VERSION=0.5.2
+ARG MDBOOK_VERSION=v0.5.2
 ARG PORT=3000
 
 # Install curl and ca-certificates to download the precompiled binary
@@ -8,7 +8,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends curl ca-certificates \
     && rm -rf /var/lib/apt/lists/* \
     # Install mdBook precompiled binary directly to PATH
-    && curl -sSL "https://github.com/rust-lang/mdBook/releases/download/${MDBOOK_VERSION}/mdbook-${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
+    && curl -fsSL "https://github.com/rust-lang/mdBook/releases/download/${MDBOOK_VERSION}/mdbook-${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
        | tar -xz --directory=/usr/local/bin \
     && mdbook --version
 
