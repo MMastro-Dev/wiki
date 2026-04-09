@@ -1,6 +1,6 @@
 [book]
 title = "MMastro.dev's Wiki"
-authors = [MastroDev]
+authors = ["MastroDev"]
 description = "This is the wiki for my sewlfhosted website, it presents all the documentation for my future reference."
 src = "src"
 language = "en"
