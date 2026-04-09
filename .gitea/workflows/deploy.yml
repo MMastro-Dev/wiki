@@ -38,9 +38,9 @@ jobs:
           ssh -o StrictHostKeyChecking=no gitea-runner@172.17.0.1 \
             "docker pull git.mmastro.dev/maxim/mastrodocs:latest"
           ssh -o StrictHostKeyChecking=no gitea-runner@172.17.0.1 \
-            "docker stop mastrodocs || true"
+            "docker stop mastrodocs"
           ssh -o StrictHostKeyChecking=no gitea-runner@172.17.0.1 \
-            "docker rm mastrodocs || true"
+            "docker rm mastrodocs"
           ssh -o StrictHostKeyChecking=no gitea-runner@172.17.0.1 \
             "docker run -d --name mastrodocs --network homenet --restart unless-stopped -p 127.0.0.1:1240:3000 git.mmastro.dev/maxim/mastrodocs:latest"
 
