@@ -2,50 +2,24 @@
 
 ## System Diagram
 
-```
-                         ┌─────────────────────────────────────┐
-                         │           INTERNET                  │
-                         └─────────────┬───────────────────────┘
-                                       │
-                         ┌─────────────▼───────────────────────┐
-                         │         CLOUDFLARE                  │
-                         │  Orange cloud: proxied services     │
-                         │  Grey cloud:  DNS-only passthrough  │
-                         └─────────────┬───────────────────────┘
-                                       │ HTTPS (443)
-                         ┌─────────────▼───────────────────────┐
-                         │           CADDY 2.9+                │
-                         │  TLS termination (DNS-01/CF plugin) │
-                         │  Subdomain routing                  │
-                         │  Security headers                   │
-                         │  trusted_proxies cloudflare         │
-                         └──────┬──────────────┬───────────────┘
-                                │              │
-              ┌─────────────────▼──┐    ┌──────▼─────────────────┐
-              │   forward_auth     │    │   Direct reverse_proxy  │
-              │   oauth2-proxy     │    │   (no-auth services)    │
-              │   localhost:4180   │    └────────────────────────-┘
-              └─────────┬──────────┘
-                        │ session valid?
-               ┌────────┴──────────┐
-               │ YES               │ NO
-               │                  ▼
-               │      ┌───────────────────────┐
-               │      │  Pocket ID (OIDC)     │
-               │      │  login.mmastro.dev    │
-               │      │  localhost:1411        │
-               │      └───────────────────────┘
-               │
-    ┌──────────▼───────────────────────────────────────┐
-    │              BACKEND SERVICES                    │
-    │                                                  │
-    │  Standard tier      │  Admin tier               │
-    │  ─────────────      │  ──────────               │
-    │  photos  :2283      │  mail   :8025             │
-    │  budget  :5006      │  git    :3000             │
-    │  memos   :5230      │  wiki   :1240             │
-    │  drive   :8010      │  dns    :8088             │
-    └──────────────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    INTERNET([Internet])
+    CF["Cloudflare\nOrange cloud: proxied services\nGrey cloud: DNS-only passthrough"]
+    CADDY["Caddy 2.9+\nTLS termination · DNS-01/CF plugin\nSubdomain routing · Security headers\ntrusted_proxies cloudflare"]
+    FA["forward_auth\noauth2-proxy\nlocalhost:4180"]
+    DIRECT["Direct reverse_proxy\n(no-auth services)"]
+    PID["Pocket ID (OIDC)\nlogin.mmastro.dev\nlocalhost:1411"]
+    STANDARD["Standard tier\nphotos :2283\nbudget :5006\nmemos  :5230\ndrive  :8010"]
+    ADMIN["Admin tier\nmail :8025\ngit  :3000\nwiki :1240\ndns  :8088"]
+
+    INTERNET -->|HTTPS| CF
+    CF -->|"HTTPS (443)"| CADDY
+    CADDY --> FA
+    CADDY --> DIRECT
+    FA -->|"401 — no session"| PID
+    FA -->|"202 — session valid"| STANDARD
+    FA -->|"202 — session valid"| ADMIN
 ```
 
 ## Component Roles
@@ -60,42 +34,53 @@
 
 ## Auth Gate Flow
 
-```
-Request arrives at Caddy
-        │
-        ├─ No-auth service? ──────────────────────────► Pass through to backend
-        │
-        ├─ Standard tier?
-        │       │
-        │       └─ forward_auth → oauth2-proxy /oauth2/auth
-        │               │
-        │               ├─ 202 (valid session) ──────► Pass through to backend
-        │               └─ 401 (no session) ─────────► Redirect to Pocket ID
-        │
-        └─ Admin tier?
-                │
-                ├─ IP not in trusted range? ─────────► 403 (no login page shown)
-                │
-                └─ forward_auth → oauth2-proxy /oauth2/auth
-                        │
-                        ├─ 202 (valid session) ──────► Pass through to backend
-                        └─ 401 (no session) ─────────► Redirect to Pocket ID
+```mermaid
+flowchart TD
+    REQ([Request arrives at Caddy])
+    NOAUTH{No-auth service?}
+    PASSTHROUGH([Pass through to backend])
+    STANDARD{Standard tier?}
+    FA_STD["forward_auth\noauth2-proxy /oauth2/auth"]
+    OK_STD([Pass through to backend])
+    REDIR_STD([Redirect to Pocket ID])
+    ADMIN{Admin tier?}
+    IPCHECK{IP in trusted range?}
+    F403([403 Forbidden])
+    FA_ADM["forward_auth\noauth2-proxy /oauth2/auth"]
+    OK_ADM([Pass through to backend])
+    REDIR_ADM([Redirect to Pocket ID])
+
+    REQ --> NOAUTH
+    NOAUTH -->|Yes| PASSTHROUGH
+    NOAUTH -->|No| STANDARD
+    STANDARD -->|Yes| FA_STD
+    FA_STD -->|"202 valid session"| OK_STD
+    FA_STD -->|"401 no session"| REDIR_STD
+    STANDARD -->|No| ADMIN
+    ADMIN -->|Yes| IPCHECK
+    IPCHECK -->|Not trusted| F403
+    IPCHECK -->|Trusted| FA_ADM
+    FA_ADM -->|"202 valid session"| OK_ADM
+    FA_ADM -->|"401 no session"| REDIR_ADM
 ```
 
 ## Data Flow for Native OIDC Services
 
 Some services (Gitea, Actual Budget, Paperless-ngx) maintain their own OIDC sessions with Pocket ID. When a valid oauth2-proxy session exists, Pocket ID recognises it and silently returns a token — the user sees a single login, not two.
 
-```
-User (LAN / authenticated) → Caddy → oauth2-proxy gate passes
-                                           │
-                                           ▼
-                                    Backend service
-                                    (Gitea / Budget / Paperless)
-                                           │ initiates own OIDC flow
-                                           ▼
-                                    Pocket ID: session exists → silent token
-                                           │
-                                           ▼
-                                    User is signed in to backend
+```mermaid
+sequenceDiagram
+    actor User
+    participant Caddy
+    participant oauth2-proxy
+    participant Backend as Backend Service<br/>(Gitea / Budget / Paperless)
+    participant PocketID as Pocket ID
+
+    User->>Caddy: Request
+    Caddy->>oauth2-proxy: forward_auth check
+    oauth2-proxy-->>Caddy: 202 session valid
+    Caddy->>Backend: Proxied request
+    Backend->>PocketID: Initiates own OIDC flow
+    PocketID-->>Backend: Session exists → silent token
+    Backend-->>User: Signed in
 ```

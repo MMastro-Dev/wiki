@@ -26,6 +26,7 @@
 - [AdGuard Home](services/adguard.md)
 - [CV Site](services/cv.md)
 - [Static Site](services/static-site.md)
+- [Wiki](services/wiki.md)
 
 # Operations
 

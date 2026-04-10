@@ -68,3 +68,13 @@ Admin tier: IP check runs first → 403 for untrusted IPs before showing login.
 ## Documentation
 
 The authoritative reference is `src/constitution.md` in this repository. Keep it updated when infrastructure changes.
+
+## Handling Contradictions and Doubts
+
+Before implementing any change, check it against the constitution and these instructions for contradictions. If a contradiction or ambiguity is found:
+
+1. **Point it out explicitly** — state what conflicts with what.
+2. **Ask the user to resolve it** before proceeding.
+3. **Never silently pick a side** — do not assume the newer instruction overrides the older one without confirmation.
+
+Examples that warrant a question: a new service assigned to Admin tier but orange cloud; a port already in use; a rule that would require wrapping `login.mmastro.dev` or `auth.mmastro.dev`.

@@ -16,7 +16,7 @@ This is required for the Admin tier IP check to work correctly from the LAN.
 | External URL | `https://dns.mmastro.dev` |
 | Compose path | `/srv/adguard/docker-compose.yml` |
 | Config volume | `/srv/adguard/conf` → `/opt/adguardhome/conf` |
-| CF mode | Orange (proxied) |
+| CF mode | Grey (DNS-only — not proxied) |
 | Auth tier | Admin (✅ OIDC + IP check enforced) |
 
 ## DNS Rewrites

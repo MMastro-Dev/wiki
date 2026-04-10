@@ -88,8 +88,8 @@ Every service must be assigned to exactly one trust tier. The tier determines wh
 | `mail.mmastro.dev` | MailHog | 8025 | Grey | Admin | ✅ ACTIVE — OIDC + IP check enforced |
 | `memos.mmastro.dev` | Memos | 5230 | Orange | Standard | ⚠️ PARTIAL — auth gate not yet active |
 | `drive.mmastro.dev` | Paperless-ngx | 8010 | Orange | Standard | ✅ ACTIVE — native OIDC via Pocket ID, oauth2-proxy gate active |
-| `wiki.mmastro.dev` | This wiki (mdBook) | 1240 | Orange | Admin | ✅ ACTIVE |
-| `dns.mmastro.dev` | AdGuard Home | 8088 | Orange | Admin | ✅ ACTIVE |
+| `wiki.mmastro.dev` | This wiki (mdBook) | 1240 | Grey | Admin | ✅ ACTIVE |
+| `dns.mmastro.dev` | AdGuard Home | 8088 | Grey | Admin | ✅ ACTIVE |
 | N/A | Postfix | 587 (internal) | N/A | N/A | ✅ ACTIVE — sends to MailHog |
 | N/A | Gitea act-runner | — | N/A | N/A | ✅ ACTIVE |
 | `matrix.mmastro.dev` | Matrix | TBC | — | Standard | 🔲 PLANNED — do not implement until requested |

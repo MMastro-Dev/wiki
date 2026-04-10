@@ -1,10 +1,4 @@
-FROM rust:slim-bookworm AS builder
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    pkg-config \
-    libssl-dev \
-    perl \
-    && rm -rf /var/lib/apt/lists/*
+FROM rust:bookworm AS builder
 
 # Each RUN is a separate cache layer — only the changed crate rebuilds on version bump
 RUN cargo install mdbook --vers "0.4.40" --locked
