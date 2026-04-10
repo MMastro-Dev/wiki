@@ -1,21 +1,32 @@
+FROM rust:slim-bookworm AS builder
+
+#Download Base mdBook
+RUN cargo install mdbook
+
+# Download Plugins
+
+# mdbook-admonish
+RUN cargo install mdbook-admonish --vers "1.20.0" --locked
+# mdbook-mermaid
+RUN cargo install mdbook-mermaid
+# mdbook-linkcheck
+RUN cargo install mdbook-linkcheck
+
 FROM debian:bookworm-slim
 
-ARG MDBOOK_VERSION=v0.5.2
 ARG PORT=3000
 
-# Install curl and ca-certificates to download the precompiled binary
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl ca-certificates \
-    && rm -rf /var/lib/apt/lists/* \
-    # Install mdBook precompiled binary directly to PATH
-    && curl -fsSL "https://github.com/rust-lang/mdBook/releases/download/${MDBOOK_VERSION}/mdbook-${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
-       | tar -xz --directory=/usr/local/bin \
-    && mdbook --version
+COPY --from=builder /usr/local/cargo/bin/mdbook /usr/local/bin/mdbook
 
 WORKDIR /book
 
 COPY book.toml book.toml
+COPY README.md README.md
 COPY src/ src/
+
+# Install Plugins
+RUN mdbook-admonish install .
+RUN mdbook-mermaid install .
 
 # Build the book at image build time to catch errors early (CI)
 RUN mdbook build

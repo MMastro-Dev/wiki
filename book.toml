@@ -30,3 +30,7 @@ heading-split-level = 3
 [output.html.fold]
 enable = false
 level = 0
+
+[output.linkcheck]
+follow-web-links = true
+traverseaent-direcies = false
