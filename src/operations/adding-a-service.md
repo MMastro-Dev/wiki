@@ -71,7 +71,7 @@ caddy validate --config /etc/caddy/Caddyfile && systemctl reload caddy
 
 ### 8. Update the Constitution
 
-Add the new service to the [Service Inventory](../constitution.md) table.
+Add the new service to the Service Inventory table in `.gitea/constitution.md`.
 
 ### 9. Update the Weekly Maintenance Script
 

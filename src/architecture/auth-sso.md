@@ -37,7 +37,7 @@ IP check runs **before** the OIDC gate:
 2. If `remote_ip` is trusted → same OIDC gate as Standard tier
 
 Trusted ranges are defined in the Caddyfile `require_auth_admin` snippet.
-See [Constitution §3](../constitution.md) for current values and the WireGuard placeholder note.
+See the `require_auth_admin` snippet in the Caddyfile for current values and the WireGuard placeholder note.
 
 ## Native OIDC Services
 

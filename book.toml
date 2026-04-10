@@ -33,4 +33,3 @@ level = 0
 
 [output.linkcheck]
 follow-web-links = true
-traverseaent-direcies = false

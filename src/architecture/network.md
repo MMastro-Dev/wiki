@@ -22,7 +22,7 @@ Default policy: **deny incoming, allow outgoing**.
 | Allow | 222/tcp | Any | Gitea SSH (git push) |
 | Allow | 53/tcp+udp | LAN | AdGuard DNS (LAN clients only) |
 
-> **[VERIFY ON SERVER]** — Run `ufw status verbose` on the server to confirm the exact ruleset. The above is based on the migration scripts; manual changes may have been made.
+> **VERIFY ON SERVER** — Run `ufw status verbose` on the server to confirm the exact ruleset. The above is based on the migration scripts; manual changes may have been made.
 
 ## Port Binding Security
 

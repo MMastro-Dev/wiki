@@ -1,9 +1,9 @@
 FROM rust:bookworm AS builder
 
 # Each RUN is a separate cache layer — only the changed crate rebuilds on version bump
-RUN cargo install mdbook --vers "0.4.40" --locked
+RUN cargo install mdbook --vers "0.5.2" --locked
 RUN cargo install mdbook-admonish --vers "1.20.0" --locked
-RUN cargo install mdbook-mermaid --vers "0.14.0" --locked
+RUN cargo install mdbook-mermaid --vers "0.17.0" --locked
 RUN cargo install mdbook-linkcheck --vers "0.7.7" --locked
 
 FROM debian:bookworm-slim
