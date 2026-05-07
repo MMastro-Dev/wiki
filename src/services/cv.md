@@ -1,9 +1,29 @@
 # CV Site
 
+**GitHub:** [MMastro-Dev/cv](https://github.com/MMastro-Dev/cv)
+
 ## Purpose
 
-Hugo-based CV/portfolio site at `cv.mmastro.dev`. Publicly accessible, no authentication.
-Follows the same CI/CD structure as the Hugo blog — built via Gitea CI and deployed as a Docker container.
+A minimalist, data-driven Hugo CV/portfolio site at `cv.mmastro.dev`. All content lives in a single
+`assets/data/cv.yaml` file. Publicly accessible, no authentication.
+
+## Features
+
+- **Single source of truth** — all content in `assets/data/cv.yaml`; separate YAML files for job-tailored variants
+- **PDF auto-generation** — CI/CD builds a print-ready `cv.pdf` via headless Chromium on every deploy
+- **No JavaScript** — pure HTML + CSS, zero client-side dependencies
+- **WCAG 2.1 AA compliant** — skip-link, `aria-labelledby`, focus styles, 4.5:1 contrast, greyscale-safe
+- **CV variant library** — company-specific CV pages at separate slugs, each from its own YAML file
+- **AI Copilot skills** — `job-fitness-review` (ATS scoring, tailored variant generation) and `cv-variant-sync` (propagate base CV changes to all variants)
+
+## Stack
+
+| Layer | Technology |
+|---|---|
+| Site generator | Hugo Extended ≥ 0.156 |
+| Serving | nginx:alpine (inside container) |
+| PDF | Headless Chromium (build-time only) |
+| Build image | `debian:bookworm-slim` (multi-stage) |
 
 ## Details
 
@@ -17,9 +37,10 @@ Follows the same CI/CD structure as the Hugo blog — built via Gitea CI and dep
 
 ## Deployment
 
-Same CI/CD pipeline pattern as the Hugo blog:
-built by the Gitea act-runner on push to `main`, pushed to the `git.mmastro.dev` container registry,
-and deployed via SSH to the server.
+CI/CD via Gitea Actions (`.gitea/workflows/deploy.yml`): push to `main` → Hugo build + PDF generation →
+Docker image pushed to `git.mmastro.dev` registry → SSH deploy (`docker pull` + `docker run --restart unless-stopped`).
+
+Required Gitea secrets: `REGISTRY_URL`, `REGISTRY_USER`, `REGISTRY_TOKEN`, `SITE_URL`, `DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_KEY`.
 
 ## Restart
 

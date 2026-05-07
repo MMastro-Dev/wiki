@@ -1,8 +1,10 @@
 # Hugo Blog
 
+**GitHub:** [MMastro-Dev/blog](https://github.com/MMastro-Dev/blog)
+
 ## Purpose
 
-Public-facing blog at `blog.mmastro.dev`. Built via Gitea CI and deployed as a Docker container.
+Personal blog at `blog.mmastro.dev`. Built via Gitea CI and deployed as a Docker container.
 No authentication — publicly accessible.
 
 ## Details

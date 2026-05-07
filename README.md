@@ -1,12 +1,12 @@
 # MMastro.dev's Wiki
 
-Personal wiki and documentation site for [MMastro.dev](https://mmastro.dev), built with [mdBook](https://rust-lang.github.io/mdBook/). Serves as a self-hosted reference for the infrastructure, services, and configurations powering the site.
+Personal wiki for [MMastro.dev](https://mmastro.dev), built with [mdBook](https://rust-lang.github.io/mdBook/). Self-hosted reference for infrastructure, services, and configurations.
 
 Live at: **[https://wiki.mmastro.dev](https://wiki.mmastro.dev)** (Admin auth — LAN/VPN access only)
 
 ## Purpose
 
-A living reference for future me — covering setup guides, self-hosted service configs, and any other notes worth keeping around.
+Reference notes for future me — setup guides, service configs, and operational notes.
 
 ## Deployment
 

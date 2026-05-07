@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Self-hosted photo and video management. High-performance media server with mobile backup support.
+Self-hosted photo and video server with mobile backup support.
 Large file uploads require direct connection (grey cloud, no Cloudflare size limits).
 
 ## Details

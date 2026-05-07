@@ -25,6 +25,8 @@
 - [Paperless-ngx](services/paperless.md)
 - [AdGuard Home](services/adguard.md)
 - [CV Site](services/cv.md)
+- [CV AI](services/cv-ai.md)
+- [CV Forms](services/cv-forms.md)
 - [Static Site](services/static-site.md)
 - [Wiki](services/wiki.md)
 

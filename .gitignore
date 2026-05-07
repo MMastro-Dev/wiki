@@ -1,0 +1,5 @@
+# Agent notes and planning — not tracked in git
+notes/
+
+# mdBook build output
+book/

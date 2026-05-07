@@ -78,3 +78,27 @@ Before implementing any change, check it against the constitution and these inst
 3. **Never silently pick a side** — do not assume the newer instruction overrides the older one without confirmation.
 
 Examples that warrant a question: a new service assigned to Admin tier but orange cloud; a port already in use; a rule that would require wrapping `login.mmastro.dev` or `auth.mmastro.dev`.
+
+## Writing Style — Avoiding LLM Tells
+
+When writing or editing any prose (wiki pages, README files, CV content, commit messages), avoid patterns that make output read as AI-generated. The goal is natural, specific, concrete writing — not sterilised prose. Keep flagged words when they are accurate and unavoidable; cut them when they dress up a claim that could be stated more directly.
+
+**High-density vocabulary to replace:**
+`delve` → "explore"; `leverage` → "use"; `showcase/showcasing` → "show" or "demonstrate"; `pivotal` → "key" or drop; `underscore` (verb) → "show" or "confirm"; `tapestry`, `landscape` (figurative), `testament`, `realm`, `garner`, `bolster`, `meticulous/meticulously`, `foster/fostering`, `enhance`, `seamlessly`, `unlock`, `empower`, `elevate`, `vibrant`, `nestled`, `crucial`, `align with`, `highlight` (verb), `enduring`.
+
+**Puffery to cut:** "commitment to", "dedication to", "passion for", "deep understanding", "proven track record" — prefer concrete evidence over these claims.
+
+**Formulaic structures to avoid:**
+- Negative parallelism: "not just X, but Y" / "not X, it's Y"
+- Unpaid rule of three: three-adjective or three-phrase piles where not all three earn their place
+- Flourishes: "…not an afterthought", "from X to Y", "…and beyond"
+- Copula substitutes: "serves as / stands as / marks / represents / boasts / features / offers" where "is" or "has" works
+- Cliché openers: "In today's fast-paced…", "In the evolving landscape of…"
+
+**Punctuation:**
+- Em dashes for genuine punctuation need only — replace lazy emphasis dashes with commas, parentheses, or a full stop
+- Use straight quotes (`"` `'`) not curly quotes (`"` `"` `'` `'`)
+
+**Filler to drop:** "ongoing initiatives", "despite challenges", "positioned to…"
+
+After every suggestion, confirm it remains truthful.

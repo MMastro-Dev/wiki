@@ -2,8 +2,8 @@
 
 ## Purpose
 
-Self-hosted Git service. Hosts all code repositories including CI/CD pipelines via Gitea Actions.
-Integrated with Pocket ID for OIDC authentication — local password login is disabled.
+Self-hosted Git service. Hosts all code repositories and CI/CD pipelines via Gitea Actions.
+Uses Pocket ID for OIDC authentication — local password login is disabled.
 
 ## Details
 
