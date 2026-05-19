@@ -109,6 +109,46 @@ Everything that currently runs on the Wyse 5070 except the gateway services:
 - Static site
 - Promtail (ships logs to thin client Loki)
 
+### AI Server Workspace Storage
+
+2x 2TB WD Black HDDs (already owned) form a dedicated ZFS mirror pool for AI workspaces — separate from the main HDD pool:
+
+- **2TB usable** with single-drive redundancy
+- Stores fine-tuning datasets, training adapters, model archive, dev workspaces
+- Drives are idle between sessions; spin-down keeps power draw near zero
+
+ZFS mirror is the right choice here (only 2 drives; mergerfs needs a parity drive for any redundancy). ZFS ARC for 2TB is ~2GB, staying within the NAS's 8GB RAM budget.
+
+**WD Black TLER fix** — desktop drives have no TLER by default. Without it, a slow sector recovery can stall long enough for ZFS to drop the drive from the pool. Fix on both drives:
+
+```bash
+hdparm -J 7 --please-destroy-my-drive /dev/sdX
+```
+
+Persist across reboots in `/etc/hdparm.conf`:
+
+```
+/dev/sdX {
+    write_read_sector_timeouts = 7 7
+}
+```
+
+**Spin-down** — configure 10-minute spindown and reduce ZFS's txg commit interval so it doesn't prevent the drives from sleeping:
+
+```bash
+hdparm -S 120 /dev/sdX   # 120 × 5s = 10 minutes
+```
+
+Persist spin-down in `/etc/hdparm.conf`. Persist the txg change via `/etc/modprobe.d/zfs.conf`:
+
+```
+options zfs zfs_txg_timeout=30
+```
+
+Scheduled scrubs (monthly) will spin the drives up regardless — that is expected.
+
+---
+
 ### Storage Architecture
 
 With native SATA, the USB bottleneck is gone. The storage tiering strategy becomes simpler and more reliable:

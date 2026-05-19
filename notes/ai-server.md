@@ -51,6 +51,17 @@ LLM inference draws ~250-310W from the 3090 (memory-bandwidth bound, not peak TD
 
 Set power limit on first boot: `nvidia-smi -pl 320` (persist via systemd). No throughput loss, caps worst-case system draw at ~420W.
 
+### Storage
+
+512GB local NVMe is sufficient because bulk storage sits on the NAS over NFS:
+
+| Location | Contents |
+|---|---|
+| Local NVMe | OS, Docker images, active Ollama models (~50-60 GB for 3-4 Q4_K_M models) |
+| NAS (NFS mount) | Fine-tuning datasets, training adapters, model archive, dev workspaces |
+
+Keep Ollama's model directory (`~/.ollama/models`) on local NVMe. Loading a 9 GB model over 1GbE takes ~90s; from NVMe it takes ~3s. Only archive models not in active rotation to the NAS. A 1TB NVMe would add headroom for experimentation without the NAS dependency, at ~€15-25 extra — worth it if 10GbE between the two machines is not available.
+
 ### Always-On
 
 The CV-AI service is a portfolio piece — visitors won't wait 60s for a cold start. Always-on with models pre-loaded (~0.5s to first token). Ollama drops GPU to low P-state between requests (~30-60W idle vs 280-350W during inference). Annual electricity: ~€180-210.
