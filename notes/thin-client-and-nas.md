@@ -102,12 +102,12 @@ Prebuilt NAS devices (Synology, QNAP) cost €300-500 for 4-bay models, run prop
 |---|---|---|
 | Mini-ITX board (4+ SATA, M.2 slot) | ASRock N100M, Topton/CWWK N100, used J5040-ITX | €80-130 |
 | Case (5-bay 3.5") | Jonsbo N2 (aluminum, premium) | €70-90 |
-| PSU | Corsair SF750 (SFX, 750W, 80+ Gold, fully modular) | €120-150 |
+| PSU | Corsair SF750 Platinum 2024 (SFX, 750W, 80+ Platinum) | €150-180 |
 | RAM | 16GB DDR4 SODIMM (reused from Wyse 5070, no purchase) | €0 |
-| Boot SSD | Cheap NVMe or M.2 SATA | €0-45 |
+| Boot NVMe | 1TB (€100) or 2TB (€200) | €100-200 |
 | HDDs (main pool) | 3x WD Red 4TB (owned) | €0 |
 | HDDs (AI workspace) | 2x WD Black 2TB (owned) | €0 |
-| **Total** | | **€270-415** |
+| **Total** | | **€400-600** |
 
 The Jonsbo N2 and Corsair SF750 are premium aesthetic choices. Cheaper alternatives exist but these give the NAS a clean, solid build quality that matches the rest of the setup.
 
@@ -119,13 +119,14 @@ The Wyse 5070's original 16GB (2x8GB) kit moves into the NAS. The spare 2x4GB ki
 
 **Why 8GB on the thin client:** the services there are individually small and collectively stay well under 6GB even during bursts. If monitoring later shows swap activity or responsiveness drops, the upgrade path is buying a 2x8GB SODIMM kit (~€25-30).
 
-### Boot SSD
+### Boot NVMe
 
-NAS workloads are IOPS-bound (database random reads), not sequential-bandwidth-bound. A SATA SSD is indistinguishable from NVMe at this scale.
+NAS workloads are IOPS-bound (database random reads), not sequential-bandwidth-bound. A SATA SSD is indistinguishable from NVMe at this scale, but NVMe Gen3 drives in the 1-2TB range offer good value and leave room for Postgres, Docker images, and thumbnails without tight space management.
 
-- If the board has an M.2 SATA slot (key B+M): use a cheap M.2 SATA drive (~€25-35 for 256GB)
-- If the board only has M.2 NVMe (key M): buy a cheap Gen3 NVMe (~€35-45 for 512GB)
-- Alternative: boot from the owned 60GB 2.5" SATA SSD via SATA (tight with Docker images + DBs)
+- **1TB NVMe (~€100):** comfortable for Immich thumbnails + Paperless DB + Docker layers with room to spare
+- **2TB NVMe (~€200):** future-proof if Immich thumbnail cache or Postgres WAL grows significantly
+
+Gen4/Gen5 is wasted money at this scale. A cheap Gen3 drive is the right choice.
 
 ### DDR5: Not Worth It
 

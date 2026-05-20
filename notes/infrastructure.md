@@ -35,7 +35,7 @@ The thin client handles the gateway layer (proxy, DNS, auth). The NAS handles al
 | Dell Wyse 5070 (Celeron J4105, 16GB, 1TB M.2 SATA SSD) | In use | Thin client (repurposed) |
 | AMD Ryzen 5 3600X | Owned, idle | AI server |
 | MSI B450M-A PRO MAX | Owned, idle | AI server |
-| Corsair CX600 PSU | On personal PC | AI server (personal PC gets new PSU) |
+| Corsair CX600 PSU | On personal PC | **Sold** (personal PC + AI server each get new PSU) |
 | RTX 3090 24GB (no cooler) | ✅ Acquired, €765 | AI server |
 | 4GB DDR4 SODIMM PC4-2400T | Owned | NAS (part of 8GB kit) |
 | 4GB DDR4 SODIMM PC4-2666V | ✅ Acquired, €10 | NAS (part of 8GB kit) |
@@ -90,34 +90,38 @@ The thin client handles the gateway layer (proxy, DNS, auth). The NAS handles al
 | Item | Amount |
 |---|---|
 | RTX 3090 24GB | -€765 |
+| GPU thermal mod (Gelid pads, MX-7, fan, bracket) | -€130 |
 | 4GB DDR4 SODIMM | -€10 |
 | DDR3 sale | +€20 |
 | VS550 PSU sale | +€20 |
-| **Net spent** | **-€735** |
+| **Net spent** | **-€865** |
 
 ### Remaining Purchases
 
 | Item | Estimated cost |
 |---|---|
-| GPU AIO cooling kit (used) | €80-120 |
 | Mini-ITX NAS board (Intel N100, 4+ SATA) | €80-130 |
-| NAS case (4-bay, Jonsbo N2/N3 or similar) | €50-100 |
-| NAS PSU (PicoPSU + DC brick or SFX) | €30-50 |
-| 32GB DDR4 3200MHz 2x16GB (AI server) | €60-65 |
+| NAS case (Jonsbo N2) | €70-90 |
+| NAS PSU (Corsair SF750 Platinum 2024) | €150-180 |
+| NAS boot NVMe (1-2TB) | €100-200 |
+| 32GB DDR4 3200MHz 2x16GB DIMM (AI server) | €150 |
 | 512GB NVMe Gen3 M.2 2280 (AI server) | €40-45 |
-| PSU for personal PC (frees CX600) | €50-60 |
-| AI server case (if needed) | €30-40 |
-| **Remaining to spend** | **~€420-610** |
+| AI server PSU (Seasonic PRIME PX-1000, 1000W Platinum) | €220-240 |
+| AI server case (Thermaltake Tower 300) | €90-110 |
+| Main PC PSU (be quiet! Straight Power 12 750W) | €130 |
+| Main PC PCIe riser cable | €30-50 |
+| **Remaining to spend** | **~€1,060-1,325** |
 
 ### 5-Year TCO
 
 | Component | Cost |
 |---|---|
-| Hardware (total) | ~€1,155-1,345 |
+| Hardware (total spend) | ~€1,925-2,190 |
+| Sales offset (DDR3, VS550, CX600) | ~+€65 |
 | Electricity — thin client (5yr, ~12W) | ~€184 |
 | Electricity — NAS (5yr, ~18W) | ~€276 |
 | Electricity — AI server (5yr, ~60W avg) | ~€920 |
-| **5-year total** | **~€2,535-2,725** |
+| **5-year total** | **~€3,240-3,505** |
 
 ---
 
@@ -125,11 +129,10 @@ The thin client handles the gateway layer (proxy, DNS, auth). The NAS handles al
 
 ### Hardware
 - [x] RTX 3090 acquired at €765
-- [x] PSU: CX600 on AI server (set `nvidia-smi -pl 320` on first boot)
-- [ ] Find GPU AIO cooling (Alphacool Eiswolf 3090 / Bykski AIO kit, €80-120)
+- [x] PSU: Seasonic PRIME PX-1000 (1000W Platinum, 24/7, future 2-GPU headroom; set `nvidia-smi -pl 320` on first boot)
+- [x] GPU cooling: Zotac Trinity stock air cooler + Gelid Ultimate pads + Arctic MX-7 + backplate fan
 - [ ] Select NAS mini-ITX board (N100 with 4+ SATA, M.2 slot)
-- [ ] Select NAS case (4-bay, space for 3x 3.5" + 1x 2.5")
-- [ ] AI server case with 240mm radiator support (or use existing)
+- [ ] AI server case: Thermaltake Tower 300
 
 ### NAS Storage
 - [ ] Move HDDs from USB dock to native SATA on new NAS board

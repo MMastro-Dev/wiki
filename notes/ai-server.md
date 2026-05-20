@@ -9,12 +9,12 @@
 | Ryzen 5 3600X | Already owned | €0 |
 | B450M-A PRO MAX | Already owned | €0 |
 | RTX 3090 24GB (Zotac Trinity, stock air cooler) | ✅ Acquired | €765 |
-| GPU thermal mod (Gelid pads ✅, Arctic MX-7 ✅, backplate fan, bracket) | Online/Owned | €100 |
-| 32GB DDR4 3200MHz (2x16GB) | New | €60-65 |
+| GPU thermal mod (Gelid pads ✅, Arctic MX-7 ✅, backplate fan, bracket) | Acquired | €130 |
+| 32GB DDR4 3200MHz (2x16GB DIMM) | New | €150 |
 | 512GB NVMe Gen3 M.2 2280 | New | €40-45 |
-| PSU for personal PC (frees CX600) | New, 600-650W 80+ Bronze | €50-60 |
-| Case | Fractal Design Meshify 2 Compact | €90-100 |
-| **Total** | | **€1,105-1,135** |
+| Seasonic PRIME PX-1000 (1000W, 80+ Platinum, hybrid fan) | New | €220-240 |
+| Case | Thermaltake Tower 300 (mATX) | €90-110 |
+| **Total** | | **€1,395-1,440** |
 
 ### GPU: Why the RTX 3090
 
@@ -30,7 +30,7 @@ The 3090 was chosen over 16GB alternatives (4070 Ti Super at €750, 4060 Ti 16G
 2. **No model swapping.** A 14B coding model fits alongside both always-loaded models (~23GB total). On 16GB, any coding model forces a full swap.
 3. **40% faster inference** than 4070 Ti Super (936 vs 672 GB/s — LLM generation is memory-bandwidth bound).
 4. **Fine-tuning capability.** 24GB fits QLoRA on 7B-14B models. 16GB is marginal.
-5. **Small cost delta.** 3090 total (~€865 with thermal mod) vs 4070 Ti Super (€750). +€115 for +8GB VRAM and +40% bandwidth.
+5. **Small cost delta.** 3090 total (~€895 with thermal mod) vs 4070 Ti Super (€750). +€145 for +8GB VRAM and +40% bandwidth.
 
 Tradeoff: the 3090 runs hot under sustained GDDR6X inference loads. Mitigated via thermal pad replacement and backplate fan — see Cooling section below.
 
@@ -45,11 +45,11 @@ Replace factory pads on the rear PCB with Gelid Solutions Ultimate pads (90×50�
 Mount an Arctic P12 Slim PWM (120mm, 15mm thick) on the backplate via a Phanteks Universal Fan Bracket. Connect to a chassis fan header and set a temperature curve in BIOS. Even low sustained airflow across the rear pads drops memory junction temps noticeably.
 
 **Thermal performance**
-With these modifications, the 3090 stays stable under sustained inference loads. The Fractal Design Meshify 2 Compact case provides strong front intake airflow over the GPU and rear exhaust, supporting the passive rear cooling approach.
+With these modifications, the 3090 stays stable under sustained inference loads. The Thermaltake Tower 300 case has a chimney-style airflow design (bottom-to-top convection) that naturally pulls heat away from the GPU, supporting the backplate cooling approach.
 
 ### PSU
 
-LLM inference draws ~250-310W from the 3090 (memory-bandwidth bound, not peak TDP). System total: ~310-390W sustained. CX600 at 390W = 66% load, in its efficiency sweet spot.
+Seasonic PRIME PX-1000: 1000W, 80+ Platinum, 12-year warranty, hybrid fan mode (fan off at low loads). Designed for continuous 24/7 operation. At sustained inference draw of 310-390W (~31-39% load), the fan stays off or runs near-silent. The 1000W capacity leaves headroom for a future second GPU (2x 3090 at 320W each = ~760W system total).
 
 Set power limit on first boot: `nvidia-smi -pl 320` (persist via systemd). No throughput loss, caps worst-case system draw at ~420W.
 

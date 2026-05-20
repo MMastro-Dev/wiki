@@ -12,15 +12,17 @@ See [infrastructure.md](infrastructure.md) for architecture context, [thin-clien
 | 4GB DDR4 SODIMM PC4-2666V | -€10 | ✅ Acquired |
 | 2x 8GB DDR3 SODIMM (sold) | +€20 | ✅ Done |
 | Corsair VS550 PSU (sold) | +€20 | ✅ Done |
-| GPU AIO cooling kit | -€80-120 | ⬜ Pending |
+| GPU thermal mod (Gelid pads, MX-7, fan, bracket) | -€130 | ✅ Acquired |
 | NAS mini-ITX board (N100) | -€80-130 | ⬜ Pending |
-| NAS case (4-bay) | -€50-100 | ⬜ Pending |
-| NAS PSU (PicoPSU + brick) | -€30-50 | ⬜ Pending |
-| NAS boot SSD (if needed) | -€25-45 | ⬜ Pending |
-| 32GB DDR4 3200MHz 2x16GB | -€60-65 | ⬜ Pending |
+| NAS case (Jonsbo N2) | -€70-90 | ⬜ Pending |
+| NAS PSU (Corsair SF750 Platinum 2024) | -€150-180 | ⬜ Pending |
+| NAS boot NVMe (1-2TB) | -€100-200 | ⬜ Pending |
+| 32GB DDR4 3200MHz 2x16GB DIMM | -€150 | ⬜ Pending |
 | 512GB NVMe Gen3 M.2 | -€40-45 | ⬜ Pending |
-| PSU for personal PC | -€50-60 | ⬜ Pending |
-| AI server case (if needed) | -€30-40 | ⬜ Pending |
+| AI server PSU (Seasonic PRIME PX-1000, 1000W Platinum) | -€220-240 | ⬜ Pending |
+| AI server case (Thermaltake Tower 300) | -€90-110 | ⬜ Pending |
+| Main PC PSU (be quiet! Straight Power 12 750W) | -€130 | ⬜ Pending |
+| Main PC PCIe riser cable | -€30-50 | ⬜ Pending |
 
 ---
 
@@ -30,13 +32,13 @@ Priority: highest. Most of the budget is already committed (GPU acquired).
 
 ### Hardware Assembly
 
-- [ ] **H1.1** Swap CX600 from personal PC to AI server. Install new PSU in personal PC. Verify it boots.
+- [ ] **H1.1** Install Seasonic PRIME PX-1000 in AI server case (Thermaltake Tower 300).
 - [ ] **H1.2** Install Ryzen 5 3600X into B450M-A PRO MAX.
-- [ ] **H1.3** Install 32GB DDR4 (2x16GB, slots A2+B2 for dual-channel).
+- [ ] **H1.3** Install 32GB DDR4 (2x16GB DIMM, slots A2+B2 for dual-channel).
 - [ ] **H1.4** Install 512GB NVMe into M.2 slot.
-- [ ] **H1.5** Mount GPU waterblock onto RTX 3090 PCB. Apply thermal paste/pads. Attach rear VRAM thermal pads + heatsinks. Mount radiator in case. Connect pump power.
-- [ ] **H1.6** Install GPU (PCIe 3.0 x16). Connect 2x 8-pin PCIe power from CX600.
-- [ ] **H1.7** Connect CX600 (24-pin ATX + 8-pin CPU), case fans, front panel.
+- [ ] **H1.5** Mount GPU with stock Zotac Trinity cooler. Apply new thermal paste (Arctic MX-7). Replace rear VRAM pads (Gelid Ultimate). Attach backplate fan (Arctic P12 Slim PWM + Phanteks bracket).
+- [ ] **H1.6** Install GPU (PCIe 3.0 x16). Connect 2x 8-pin PCIe power from Seasonic PSU.
+- [ ] **H1.7** Connect PSU (24-pin ATX + 8-pin CPU), case fans, front panel.
 - [ ] **H1.8** Boot test: BIOS, confirm CPU/RAM/NVMe detected, set XMP, set boot order.
 
 ### OS and Base Configuration
