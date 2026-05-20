@@ -32,23 +32,15 @@ The existing CX600 PSU will be sold (~€25-30 resale). The be quiet! Straight P
 | MSI B450M-A PRO MAX (mATX) | Owned | - | ~€50 |
 | RTX 3090 24GB (Zotac Trinity, stock cooler) | Acquired | €765 | ~€765 |
 | GPU thermal mod (Gelid pads, Arctic MX-7, fan, bracket) | Acquired | €130 | ~€130 |
+| Corsair HX1000i 1000W (used, 80+ Platinum) | Acquired | €110 | ~€110 |
 | 32GB DDR4 3200MHz (2x16GB DIMM) | **To buy** | €150 | ~€150 |
 | 512GB NVMe Gen3 M.2 2280 | **To buy** | €40-45 | ~€40 |
-| Seasonic PRIME PX-1000 (1000W, 80+ Platinum, 24/7) | **To buy** | €220-240 | ~€230 |
 | Thermaltake Tower 300 (mATX) | **To buy** | €90-110 | ~€100 |
-| **Subtotal (to buy)** | | **€500-545** | |
-| **Already spent** | | **€895** | |
-| **Total build cost** | | **€1,395-1,440** | |
-| **Total system value** | | | **~€1,545** |
+| **Subtotal (to buy)** | | **€280-305** | |
+| **Already spent** | | **€1,005** | |
+| **Total build cost** | | **€1,285-1,310** | |
+| **Total system value** | | | **~€1,395** |
 
-**AI Server PSU alternatives (for reference):**
-
-| PSU | Wattage | Efficiency | Price | Notes |
-|---|---:|---|---:|---|
-| Corsair HX1000i (2023) | 1000W | 80+ Platinum | ~€200-220 | iCUE power monitoring, zero-RPM mode |
-| be quiet! Dark Power 13 | 1000W | 80+ Titanium | ~€230-260 | Frameless fan, highest efficiency tier |
-| Corsair HX1200 | 1200W | 80+ Platinum | ~€230-250 | More headroom if second GPU is higher-end |
-| Seasonic PRIME TX-1000 | 1000W | 80+ Titanium | ~€270-300 | Best efficiency available, 12-year warranty |
 
 ---
 
@@ -85,10 +77,10 @@ The existing CX600 PSU will be sold (~€25-30 resale). The be quiet! Straight P
 | Machine | Already Spent | Still To Buy | Total New Spend |
 |---|---:|---:|---:|
 | Main PC | €0 | €160-180 | €160-180 |
-| AI Server | €895 | €500-545 | €1,395-1,440 |
+| AI Server | €1,005 | €280-305 | €1,285-1,310 |
 | NAS | €0 | €400-600 | €400-600 |
 | Thin Client | €0 | €0 | €0 |
-| **Grand Total** | **€895** | **€1,060-1,325** | **€1,955-2,220** |
+| **Grand Total** | **€1,005** | **€840-1,085** | **€1,845-2,090** |
 
 **Offset from sales:** CX600 PSU (~€25-30 resale) reduces net spend slightly.
 
@@ -108,7 +100,7 @@ The existing CX600 PSU will be sold (~€25-30 resale). The be quiet! Straight P
 
 ## Priority Order (Buy Sequence)
 
-1. **AI Server remaining parts** — 32GB DDR4 DIMM, NVMe, Seasonic PRIME PX-1000, Thermaltake Tower 300 (~€500-545)
+1. **AI Server remaining parts** — 32GB DDR4 DIMM, NVMe, Thermaltake Tower 300 (~€280-305)
 2. **Main PC PSU + riser** — be quiet! Straight Power 12 750W + PCIe riser cable (~€160-180); sell CX600
 3. **NAS build** — N100 board, Jonsbo N2, SF750 Platinum 2024, 1-2TB NVMe (~€400-600)
 

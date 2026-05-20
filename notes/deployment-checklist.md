@@ -13,13 +13,13 @@ See [infrastructure.md](infrastructure.md) for architecture context, [thin-clien
 | 2x 8GB DDR3 SODIMM (sold) | +€20 | ✅ Done |
 | Corsair VS550 PSU (sold) | +€20 | ✅ Done |
 | GPU thermal mod (Gelid pads, MX-7, fan, bracket) | -€130 | ✅ Acquired |
+| AI server PSU (Corsair HX1000i 1000W, used) | -€110 | ✅ Acquired |
 | NAS mini-ITX board (N100) | -€80-130 | ⬜ Pending |
 | NAS case (Jonsbo N2) | -€70-90 | ⬜ Pending |
 | NAS PSU (Corsair SF750 Platinum 2024) | -€150-180 | ⬜ Pending |
 | NAS boot NVMe (1-2TB) | -€100-200 | ⬜ Pending |
 | 32GB DDR4 3200MHz 2x16GB DIMM | -€150 | ⬜ Pending |
 | 512GB NVMe Gen3 M.2 | -€40-45 | ⬜ Pending |
-| AI server PSU (Seasonic PRIME PX-1000, 1000W Platinum) | -€220-240 | ⬜ Pending |
 | AI server case (Thermaltake Tower 300) | -€90-110 | ⬜ Pending |
 | Main PC PSU (be quiet! Straight Power 12 750W) | -€130 | ⬜ Pending |
 | Main PC PCIe riser cable | -€30-50 | ⬜ Pending |
@@ -32,7 +32,7 @@ Priority: highest. Most of the budget is already committed (GPU acquired).
 
 ### Hardware Assembly
 
-- [ ] **H1.1** Install Seasonic PRIME PX-1000 in AI server case (Thermaltake Tower 300).
+- [ ] **H1.1** Install Corsair HX1000i in AI server case (Thermaltake Tower 300).
 - [ ] **H1.2** Install Ryzen 5 3600X into B450M-A PRO MAX.
 - [ ] **H1.3** Install 32GB DDR4 (2x16GB DIMM, slots A2+B2 for dual-channel).
 - [ ] **H1.4** Install 512GB NVMe into M.2 slot.

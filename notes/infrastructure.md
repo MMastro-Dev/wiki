@@ -2,7 +2,7 @@
 
 ## Operator Profile
 
-Software developer working toward AI/ML integration expertise. Manages the homelab alone. Prefers reliability and low maintenance over features. Location: Italy. Electricity: €0.35/kWh.
+Software developer working toward AI/ML integration expertise. Manages the homelab alone. Prefers reliability and low maintenance over features. Location: Italy. Electricity: €0.19/kWh.
 
 Uses a GitHub Copilot work license (Claude Sonnet) as primary AI — wants to offload routine tasks to self-hosted models to reduce token spend.
 
@@ -91,10 +91,11 @@ The thin client handles the gateway layer (proxy, DNS, auth). The NAS handles al
 |---|---|
 | RTX 3090 24GB | -€765 |
 | GPU thermal mod (Gelid pads, MX-7, fan, bracket) | -€130 |
+| Corsair HX1000i 1000W PSU (used) | -€110 |
 | 4GB DDR4 SODIMM | -€10 |
 | DDR3 sale | +€20 |
 | VS550 PSU sale | +€20 |
-| **Net spent** | **-€865** |
+| **Net spent** | **-€975** |
 
 ### Remaining Purchases
 
@@ -106,22 +107,21 @@ The thin client handles the gateway layer (proxy, DNS, auth). The NAS handles al
 | NAS boot NVMe (1-2TB) | €100-200 |
 | 32GB DDR4 3200MHz 2x16GB DIMM (AI server) | €150 |
 | 512GB NVMe Gen3 M.2 2280 (AI server) | €40-45 |
-| AI server PSU (Seasonic PRIME PX-1000, 1000W Platinum) | €220-240 |
 | AI server case (Thermaltake Tower 300) | €90-110 |
 | Main PC PSU (be quiet! Straight Power 12 750W) | €130 |
 | Main PC PCIe riser cable | €30-50 |
-| **Remaining to spend** | **~€1,060-1,325** |
+| **Remaining to spend** | **~€840-1,085** |
 
 ### 5-Year TCO
 
 | Component | Cost |
 |---|---|
-| Hardware (total spend) | ~€1,925-2,190 |
+| Hardware (total spend) | ~€1,845-2,090 |
 | Sales offset (DDR3, VS550, CX600) | ~+€65 |
-| Electricity — thin client (5yr, ~12W) | ~€184 |
-| Electricity — NAS (5yr, ~18W) | ~€276 |
-| Electricity — AI server (5yr, ~60W avg) | ~€920 |
-| **5-year total** | **~€3,240-3,505** |
+| Electricity — thin client (5yr, ~12W) | ~€100 |
+| Electricity — NAS (5yr, ~18W) | ~€150 |
+| Electricity — AI server (5yr, ~60W avg, 70% uptime, WoL) | ~€350 |
+| **5-year total** | **~€2,380-2,625** |
 
 ---
 
@@ -129,7 +129,7 @@ The thin client handles the gateway layer (proxy, DNS, auth). The NAS handles al
 
 ### Hardware
 - [x] RTX 3090 acquired at €765
-- [x] PSU: Seasonic PRIME PX-1000 (1000W Platinum, 24/7, future 2-GPU headroom; set `nvidia-smi -pl 320` on first boot)
+- [x] PSU: Corsair HX1000i 1000W (used, 80+ Platinum, zero-RPM, future 2-GPU headroom; set `nvidia-smi -pl 320` on first boot)
 - [x] GPU cooling: Zotac Trinity stock air cooler + Gelid Ultimate pads + Arctic MX-7 + backplate fan
 - [ ] Select NAS mini-ITX board (N100 with 4+ SATA, M.2 slot)
 - [ ] AI server case: Thermaltake Tower 300

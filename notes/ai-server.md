@@ -12,9 +12,9 @@
 | GPU thermal mod (Gelid pads ✅, Arctic MX-7 ✅, backplate fan, bracket) | Acquired | €130 |
 | 32GB DDR4 3200MHz (2x16GB DIMM) | New | €150 |
 | 512GB NVMe Gen3 M.2 2280 | New | €40-45 |
-| Seasonic PRIME PX-1000 (1000W, 80+ Platinum, hybrid fan) | New | €220-240 |
+| Corsair HX1000i 1000W (used, 80+ Platinum) | ✅ Acquired | €110 |
 | Case | Thermaltake Tower 300 (mATX) | €90-110 |
-| **Total** | | **€1,395-1,440** |
+| **Total** | | **€1,285-1,310** |
 
 ### GPU: Why the RTX 3090
 
@@ -49,7 +49,7 @@ With these modifications, the 3090 stays stable under sustained inference loads.
 
 ### PSU
 
-Seasonic PRIME PX-1000: 1000W, 80+ Platinum, 12-year warranty, hybrid fan mode (fan off at low loads). Designed for continuous 24/7 operation. At sustained inference draw of 310-390W (~31-39% load), the fan stays off or runs near-silent. The 1000W capacity leaves headroom for a future second GPU (2x 3090 at 320W each = ~760W system total).
+Corsair HX1000i (used, 80+ Platinum): 1000W, zero-RPM mode (fan off at low loads), iCUE power monitoring. At sustained inference draw of 310-390W (~31-39% load), the fan stays off. The 1000W capacity leaves headroom for a future second GPU (2x 3090 at 320W each = ~760W system total).
 
 Set power limit on first boot: `nvidia-smi -pl 320` (persist via systemd). No throughput loss, caps worst-case system draw at ~420W.
 
@@ -66,7 +66,9 @@ Keep Ollama's model directory (`~/.ollama/models`) on local NVMe. Loading a 9 GB
 
 ### Always-On
 
-The CV-AI service is a portfolio piece — visitors won't wait 60s for a cold start. Always-on with models pre-loaded (~0.5s to first token). Ollama drops GPU to low P-state between requests (~30-60W idle vs 280-350W during inference). Annual electricity: ~€180-210.
+The CV-AI service is a portfolio piece — visitors won't wait 60s for a cold start. Always-on with models pre-loaded (~0.5s to first token). Ollama drops GPU to low P-state between requests (~30-60W idle vs 280-350W during inference).
+
+The server sleeps during a fixed low-traffic window (e.g., 1am–8am via systemd timer; thin client sends WoL magic packet at scheduled wake time). This preserves the CV-AI always-on guarantee during all reasonable visitor hours. Annual electricity: ~€70 (€0.19/kWh, 70% uptime).
 
 ### Software Stack
 
@@ -203,6 +205,6 @@ If the AI server goes down, Immich smart search and face grouping pause. Photos 
 3,000 requests/month, ~9M tokens/month:
 - Claude Sonnet tier: ~€30-60/month = €1,800-3,600 over 5 years
 - GPT-4o tier: ~€15-30/month = €900-1,800 over 5 years
-- Self-hosted 5-year TCO (AI server hardware + electricity): ~€1,965-2,015
+- Self-hosted 5-year TCO (AI server hardware + electricity): ~€1,635-1,660
 
 Breakeven vs Claude-tier: ~2-3 years. Plus: no rate limits, full privacy, portfolio value, fine-tuning platform.

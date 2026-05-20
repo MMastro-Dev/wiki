@@ -32,7 +32,7 @@ The Wyse 5070 is already owned and running. It has a 1TB SSD and more CPU than n
 | RAM | 8GB DDR4 (2x4GB spare kit, swapped from original 16GB) |
 | Storage | 1TB M.2 SATA SSD |
 | Idle power | ~12W |
-| Annual electricity | ~€37 |
+| Annual electricity | ~€20 |
 
 ### Services
 
