@@ -69,6 +69,23 @@ Admin tier: IP check runs first → 403 for untrusted IPs before showing login.
 
 The authoritative reference is `src/constitution.md` in this repository. Keep it updated when infrastructure changes.
 
+## Decision Log
+
+All significant decisions and recorded thoughts must be logged in `notes/decisions/`. One file per date, named `YYYY-MM-DD.md`. See `notes/decisions/README.md` for the entry format.
+
+**AI agents must append a log entry after every task** that modifies files or records a decision. Do this as the final step, after all other changes are complete. Use this format:
+
+```
+## HH:MM — <short title>
+
+**Files:** `path/to/file`  
+**Decision:** One or two sentences. What was decided and why.
+```
+
+- If the date file does not exist, create it with a `# YYYY-MM-DD` heading before appending.
+- If no files were modified (pure research or Q&A), skip the "Files" line.
+- Keep descriptions short — enough to reconstruct context, no more.
+
 ## Handling Contradictions and Doubts
 
 Before implementing any change, check it against the constitution and these instructions for contradictions. If a contradiction or ambiguity is found:

@@ -10,11 +10,11 @@
 | B450M-A PRO MAX | Already owned | €0 |
 | RTX 3090 24GB (Zotac Trinity, stock air cooler) | ✅ Acquired | €765 |
 | GPU thermal mod (Gelid pads ✅, Arctic MX-7 ✅, backplate fan, bracket) | Acquired | €130 |
-| 32GB DDR4 3200MHz (2x16GB DIMM) | New | €150 |
-| 512GB NVMe Gen3 M.2 2280 | New | €40-45 |
+| 32GB DDR4 3200MHz S3+ DragonHeart XMP (2x16GB DIMM) | ✅ Acquired | €130 |
+| Samsung PM981 500GB NVMe Gen3 | ✅ Acquired | €43 |
 | Corsair HX1000i 1000W (used, 80+ Platinum) | ✅ Acquired | €110 |
 | Case | Thermaltake Tower 300 (mATX) | €90-110 |
-| **Total** | | **€1,285-1,310** |
+| **Total** | | **€1,268-1,288** |
 
 ### GPU: Why the RTX 3090
 
