@@ -13,7 +13,7 @@
 | 32GB DDR4 3200MHz S3+ DragonHeart XMP (2x16GB DIMM) | ✅ Acquired | €130 |
 | Samsung PM981 500GB NVMe Gen3 | ✅ Acquired | €43 |
 | Corsair HX1000i 1000W (used, 80+ Platinum) | ✅ Acquired | €110 |
-| Case | Thermaltake Tower 300 (mATX) | €90-110 |
+| Case | TBD — see Case Selection section below | €50-160 |
 | **Total** | | **€1,268-1,288** |
 
 ### GPU: Why the RTX 3090
@@ -44,8 +44,110 @@ Replace factory pads on the rear PCB with Gelid Solutions Ultimate pads (90×50�
 **Backplate fan**
 Mount an Arctic P12 Slim PWM (120mm, 15mm thick) on the backplate via a Phanteks Universal Fan Bracket. Connect to a chassis fan header and set a temperature curve in BIOS. Even low sustained airflow across the rear pads drops memory junction temps noticeably.
 
-**Thermal performance**
-With these modifications, the 3090 stays stable under sustained inference loads. The Thermaltake Tower 300 case has a chimney-style airflow design (bottom-to-top convection) that naturally pulls heat away from the GPU, supporting the backplate cooling approach.
+**Chassis fans (Tower 300 chimney setup)**
+
+| Position | Fan | Qty | Direction | Purpose |
+|---|---|---|---|---|
+| Bottom | Arctic P14 PWM (140mm) | 2 | Intake ↑ | Feed cool air directly into GPU fans |
+| Top | Arctic P14 PWM (140mm) | 2 | Exhaust ↑ | Pull hot GPU/CPU air out through mesh |
+| Rear | — | 0 | — | Leave empty — rear intake disrupts vertical chimney flow |
+| Backplate | Arctic P12 Slim PWM (120mm, 15mm) | 1 | Up ↑ | Aimed at rear VRAM pads via Phanteks bracket |
+
+Total: 5 fans. Buy the Arctic P14 PWM 5-pack (~€30-35, use 4) + 1× P12 Slim (~€8-10).
+
+No rear fan: several Tower 300 builds report +3-5°C worse GPU temps with a rear intake because it creates crossflow that breaks the chimney column. The vertical path (bottom → GPU → CPU → top) works best sealed.
+
+**Fan curves:**
+- Bottom + top (same curve, matched RPM for neutral pressure): 600-800 RPM idle (inaudible), ramp to 1100-1300 RPM under sustained inference.
+- Backplate fan: tie to GPU temp if motherboard supports it, otherwise fixed ~800 RPM (~18 dBA, inaudible outside case).
+- GPU fans (IceStorm 2.0 stock curve): with good bottom intake, they stay at ~1200-1400 RPM under load vs ~1800 RPM without — significant noise reduction.
+
+**Expected thermals (sustained 320W inference, ambient 25°C):**
+- GPU die: ~72-78°C (vs ~82-88°C in a standard tower)
+- VRAM junction: ~86-94°C (vs ~100-108°C without thermal mod + backplate fan)
+- CPU: ~55-60°C (65W Ryzen 3600X barely notices)
+- Noise at 1m: ~28-32 dBA (quiet conversation level)
+
+### Case Selection
+
+**Hard constraints:**
+- Motherboard: mATX (B450M-A PRO MAX, 244 × 244mm)
+- GPU clearance: ≥ 318mm (Zotac RTX 3090 Trinity = 317.8 × 131 × 57.3mm, 3 expansion slots)
+- PSU: Corsair HX1000i = ATX, 200mm deep. This eliminates most compact mATX cases (typically 150-180mm max).
+
+**Preferences:** smallest desk footprint, vertical or cube shape, quiet under sustained load, colored or modifiable (paintable/panelled), modular panels welcome.
+
+**Critical trade-off:** the HX1000i at 200mm is the primary limiting factor for compact builds. Swapping to SFX (e.g., Corsair SF1000, ~€180-200) would open several smaller cases at the cost of selling the HX1000i (~€80-90 resale) — net delta ~€100-120. Cases below are split accordingly.
+
+---
+
+#### Group A — fits HX1000i as-is (ATX PSU ≥ 200mm)
+
+| # | Case | Volume | Footprint (W×D) | GPU max | PSU max | Shape | Colors / Materials | Price (EU) |
+|---|---|---|---|---|---|---|---|---|
+| 1 | **Thermaltake Tower 300** | ~39.5L | 250 × 285mm | 380mm | ATX (generous) | Vertical chimney | Turquoise, Snow, Black, White | €90-110 |
+| 2 | **SSUPD Meshroom S** | ~33.7L | 227 × 380mm | 336mm | ATX ≤ 200mm | Vertical chimney | Black, White (mesh panels) | €130-160 |
+| 3 | **Fractal Design Meshify 2 Mini** | 33.0L | 204 × 415mm | 331mm | ATX ≤ 250mm | Compact tower | Black, White (mesh front) | €90-110 |
+| 4 | **Fractal Design Node 804** | 40.3L | 344 × 389mm | 320mm | ATX ≤ 260mm | Dual-chamber cube | Black (brushed aluminum front) | €90-110 |
+| 5 | **Thermaltake Core V21** | 45.5L | 321 × 424mm | 350mm | ATX (generous) | Modular cube (stackable) | Black — all-steel, easy to paint | €60-75 |
+| 6 | **Montech Heritage PRO** | 41.5L | 225 × 415mm | 365mm | ATX ≤ 200mm | Compact tower (retro) | Black, White (textured front panel) | €70-85 |
+
+**Notes — Group A:**
+- **Tower 300** (current plan): chimney airflow is ideal for GPU thermals — heat rises through top mesh directly. Turquoise and Snow variants stand out visually. Small desk footprint (250mm wide). Down side: tall at 554mm.
+- **Meshroom S**: the most compact option that still accepts a 200mm ATX PSU. Vertical airflow like the Tower 300 but ~15% less volume. All-mesh construction means top-tier thermals. Tight on the 3-slot GPU (336mm clearance vs 318mm card = 18mm margin, fine). Check official ATX PSU depth spec before buying.
+- **Meshify 2 Mini**: narrowest footprint of the group (204mm wide). Conventional tower, not cube/vertical. Excellent airflow and build quality. Not colorful — all black or black/white mesh.
+- **Node 804**: true cube form factor. Dual-chamber design isolates PSU heat from GPU. RISK: only 2.2mm GPU clearance (320mm max vs 317.8mm card). Power cables at the end of the GPU might interfere. Measure twice.
+- **Core V21**: largest volume, but truly modular — every panel is interchangeable, rotatable I/O. Steel panels are trivial to powder-coat or spray paint any color. Cheapest option. Thermals are decent with 200mm front fan. Stackable if you ever add a second unit.
+- **Heritage PRO**: retro-styled front panel (textured material, not standard mesh). Compact for a tower. Verify 200mm PSU clearance at purchase (spec says ATX but depth tolerance is tight).
+
+---
+
+#### Group B — requires SFX/SFX-L PSU (unlocks smaller builds)
+
+If you sell the HX1000i (~€80-90) and buy a Corsair SF1000 Platinum (~€190) or Silverstone SX1000 SFX-L (~€200), these open up:
+
+| # | Case | Volume | Footprint (W×D) | GPU max | Shape | Colors / Materials | Price (EU) |
+|---|---|---|---|---|---|---|---|
+| 7 | **Jonsbo D31 Mesh SC** | ~29L | 375 × 360mm | 325mm | Low-profile cube w/ LCD panel | Black, White (aluminum+mesh) | €100-130 |
+| 8 | **Mechanic Master C28** | ~25L | 245 × 370mm | 330mm | Compact vertical | Black, White, Blue, Pink, Silver, custom panels | €50-80 |
+| 9 | **Geometric Future Model 2** | ~27L | 250 × 350mm | 330mm | Modular aluminum cube | Silver natural aluminum — mods by design | €120-150 |
+| 10 | **Raijintek Thetis** | ~33L | 210 × 376mm | 340mm | Compact tower (full aluminum) | Natural silver, Black anodized | €90-110 |
+| 11 | **Jonsbo D41 Mesh** | ~35L | 220 × 430mm | 355mm | Compact tower w/ LCD | Black, White (aluminum frame) | €100-140 |
+| 12 | **Sama IM01** | ~20L | 170 × 360mm | 325mm | Ultra-compact vertical | Black, White, Mint Green | €40-60 |
+
+**Notes — Group B:**
+- **Jonsbo D31 Mesh SC**: the LCD status panel on the side is a unique visual feature (shows temps/usage). True cube shape. 7mm GPU clearance margin is acceptable. Aluminum + mesh combo looks premium.
+- **Mechanic Master C28**: most color options of any mATX case on the market. Interchangeable panels (mesh, tempered glass, solid) in different colors — mix and match. Extremely modifiable. Excellent value. Community has done wild paint jobs.
+- **Geometric Future Model 2**: designed for modding — segments bolt together, panels swap freely. Raw aluminum finish. Designed to be customized, anodized, wrapped. Closest to "Lego for PC cases."
+- **Raijintek Thetis**: full aluminum construction (not steel with aluminum trim). Feels different in hand — premium, quiet (damped panels). Brushed finish takes paint/vinyl well. 340mm GPU clearance gives the most margin in Group B.
+- **Jonsbo D41 Mesh**: if the D31 is too tight (325mm), the D41 gives 355mm clearance at ~6L more volume. Still has the LCD panel option and aluminum frame aesthetic. Conventional tower proportions but narrower than most.
+- **Sama IM01**: the absolute smallest mATX case available (~20L). Mint Green variant is unique. Budget-friendly. Trade-off: airflow is adequate but not exceptional for sustained 350W — you'll hear the GPU fans ramp. Best if you power-limit to 280W.
+
+---
+
+#### Decision
+
+**Chosen case: Thermaltake Tower 300** (Turquoise or Snow variant)
+
+Shortlisted alternatives for future reference: Geometric Future Model 2, Mechanic Master C28, Montech Heritage PRO, SSUPD Meshroom S.
+
+#### Vertical GPU & Vapor Chamber Analysis
+
+The Tower 300 mounts the GPU vertically (I/O bracket at top, card end pointing down). This raised a concern about vapor chamber cooling effectiveness in vertical orientation.
+
+**Why it could be a problem (general):**
+- Vapor chambers use a flat sealed plate with internal working fluid. The fluid evaporates at the die (hot spot), vapor travels to the fin stack, condenses, and must return to the die.
+- When the evaporator (die) is physically above the condenser, gravity fights the return flow. The internal wick must do all the work via capillary action alone.
+- In extreme cases (high TDP, sustained load, evaporator-on-top): +5-10°C penalty vs horizontal. Some cheap vapor chambers with thin wicks can even partially dry out under sustained load, causing thermal throttling.
+
+**Why it is NOT an issue for this build:**
+1. The Zotac RTX 3090 Trinity uses **copper heatpipes** (6x direct-touch), not a vapor chamber. Vapor chambers are on the AMP Extreme/Holo line.
+2. Heatpipes have internal sintered wicks designed for multi-orientation operation. Vertical penalty: +1-3°C, well within margin.
+3. The Tower 300's chimney airflow (bottom intake → top exhaust) works WITH the backplate fan setup — heat from VRAM pads rises naturally into the exhaust.
+4. The power limit cap (`nvidia-smi -pl 320`) keeps sustained die power well below the card's 350W ceiling.
+5. Gaming loads (bursty) would show zero measurable difference. Sustained inference (the actual workload) is memory-bandwidth-bound — die temperature isn't the limiting factor, VRAM junction temp is. The vertical + chimney + backplate fan setup actually optimizes for VRAM cooling.
+
+**Conclusion:** no action needed. The Tower 300 vertical orientation is net-positive for this workload's thermal profile.
 
 ### PSU
 
