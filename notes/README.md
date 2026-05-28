@@ -17,6 +17,13 @@ This directory contains planning documents for the homelab expansion. The wiki i
 | [career-plan.md](career-plan.md) | Career plan: target role, phases, certifications, priority actions, success criteria |
 | [career-changelog.md](career-changelog.md) | Evolution log tracking changes between career roadmap versions |
 
+## Folders
+
+| Folder | Contents |
+|---|---|
+| [decisions/](decisions/) | Append-only decision log, one file per date |
+| [checklists/](checklists/) | Step-by-step actionable checklists for plans in progress |
+
 ## How Notes Relate to the Wiki
 
 - `notes/` = plans, decisions, rationale for changes not yet implemented

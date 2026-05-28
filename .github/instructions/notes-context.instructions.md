@@ -20,6 +20,7 @@ applyTo: 'notes/**'
 - `career-changelog.md` — evolution log tracking changes between career roadmap versions
 - `wiki-guide.md` — map of the `src/` wiki structure
 - `decisions/` — append-only decision log (see `decisions/README.md`)
+- `checklists/` — step-by-step actionable checklists for plans (see planner agent for format)
 
 ## Conventions
 

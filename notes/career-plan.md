@@ -83,10 +83,14 @@ Ordering: free > employer-sponsored > self-funded. Within each band, most aligne
 | 2026 Q2-Q3 | LFD121 -- Developing Secure Software | free | Secure-coding signal |
 | 2026 Q2-Q3 | AI-200 -- Azure AI Cloud Developer Associate | employer | Core AI direction; pairs with AI-900 |
 | 2026 Q3-Q4 | AZ-104 -- Azure Administrator | employer | Prereq for AZ-305; broad-use Azure foundation |
+| 2026 Q3-Q4 | NCA-GENL -- NVIDIA Certified Associate: Generative AI and LLMs | self-fund (~$135) | Vendor-neutral LLM/RAG/prompt-engineering signal; recognised beyond continental Europe |
 | 2027 H1 | AZ-305 -- Solutions Architect Expert | employer | SA title, only if Azure hands-on practice is real |
+| 2027 H1 | Databricks Generative AI Engineer Associate | self-fund | Alternative/complement to AZ-305; pick if Azure practice stalls; overlaps with C+D RAG work |
 | 2027 H2 | GCP Professional ML Engineer | self-fund | Differentiated niche; AI/ML passion; strong international signal |
 | 2028 | Terraform Associate or CKAD | self-fund | Automation/infra depth |
 | Optional 2028+ | AWS SAA | self-fund | Only if targeting US/UK remote markets |
+
+Full step-by-step tracking: [notes/checklists/career-certifications.md](checklists/career-certifications.md)
 
 ### Dropped
 
@@ -96,6 +100,8 @@ Ordering: free > employer-sponsored > self-funded. Within each band, most aligne
 - **AWS Developer Associate** -- marginal on top of SAA
 - **PMP / PRINCE2 / part-time bachelor's** -- no technical-role signal
 - **Vendor framework certs** -- better demonstrated by shipping
+- **CCNA1** (2019) -- archived, removed from active CV
+- **Applied Robotics Course** (2015) -- archived, removed from active CV
 
 ---
 
@@ -138,24 +144,11 @@ Ordering: free > employer-sponsored > self-funded. Within each band, most aligne
 
 ---
 
-## 6. Priority actions -- next 30 days (from April 22)
+## 6. Priority actions
 
-1. Configure real GitHub pinned repos (lead with `website`, then `mastrodocs`)
-2. Update wiki homepage text (drop "Admin auth -- LAN/VPN access only")
-3. Tick stale checklist items (courses done, mmastro.dev deployed)
-4. Publish blog post #1 (auth stack draft in progress)
-5. **Scaffold Projects C+D** -- primary focus for the month
-6. Register AI-200 exam with employer
-7. Enrol in LFD121
-8. CV rewrite with new positioning statement
-9. Write one ADR on mmastro.dev auth architecture
-10. LinkedIn: update headline and About, pin auth blog post
+Step-by-step checklist: [notes/checklists/career-immediate-actions.md](checklists/career-immediate-actions.md)
 
-### Deferred
-
-- Commercialista consultation (only relevant against a concrete international offer)
-- Salary benchmarking (1 hour on Levels.fyi, no deeper until job-hunt phase)
-- Open-source PR (month 2-3)
+The checklist covers: GitHub pins, wiki homepage fix, CV rewrite, blog post #1, ADR, Projects C+D scaffold, AI-200 registration, LFD121 enrolment, and LinkedIn updates.
 
 ---
 
