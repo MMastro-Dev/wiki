@@ -3,6 +3,8 @@ description: 'Use when writing or editing prose: wiki pages, README files, CV co
 applyTo: '**/*.md'
 ---
 
+> **Scope exclusion:** This instruction does NOT apply to files in `prompts/`. Those are stored prompt templates — see `.github/instructions/prompts.instructions.md`.
+
 # Writing Style — Avoiding LLM Tells
 
 Goal: natural, specific, concrete writing. Not sterilised prose. Keep flagged words when they are accurate and unavoidable; cut them when they dress up a claim that could be stated more directly.

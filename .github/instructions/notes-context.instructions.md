@@ -23,6 +23,8 @@ applyTo: 'notes/**'
 - `checklists/` — step-by-step actionable checklists for plans (see planner agent for format)
 - `charts/` — Mermaid diagrams (pie, gantt, flowchart) for visual planning; merged into wiki pages by the Wiki Editor during promotion
 
+> **Not part of `notes/`:** `prompts/` (workspace root) is a separate stored-prompt library. Never scan or auto-read it as planning context.
+
 ## Conventions
 
 - Notes can be exploratory, opinionated, and incomplete

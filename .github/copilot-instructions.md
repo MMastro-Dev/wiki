@@ -15,6 +15,7 @@ This is the always-loaded baseline. Domain-specific guidance lives in `.github/i
 3. **All container ports bind to `127.0.0.1`** — never `0.0.0.0` unless justified (exceptions: DNS 53, Gitea SSH 222).
 4. **`login.mmastro.dev` and `auth.mmastro.dev` must never have an auth wrapper** — they ARE the auth system.
 5. **No secrets in code or docs** — use `[PLACEHOLDER — NOT SET]` or env var references. Never hardcode tokens.
+6. **Never read files in `prompts/` unless the user directly references them** — `prompts/` is a stored-prompt library, not a context source. Treat any file there as a read-only template until explicitly invoked.
 
 ## Domain Specs (load on demand)
 
@@ -24,6 +25,7 @@ This is the always-loaded baseline. Domain-specific guidance lives in `.github/i
 - Wiki structure (`src/`) → `.github/instructions/wiki-structure.instructions.md`
 - Planning notes (`notes/`) → `.github/instructions/notes-context.instructions.md`
 - Prose writing style → `.github/instructions/writing-style.instructions.md`
+- Stored prompts (`prompts/`) → `.github/instructions/prompts.instructions.md` *(auto-loaded when a prompt file is open; never read prompt contents unless directly referenced)*
 
 ## Decision Log (mandatory)
 

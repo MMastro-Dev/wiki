@@ -30,6 +30,8 @@ See [infrastructure.md](infrastructure.md) for architecture context, [thin-clien
 
 Step-by-step checklists are in `notes/checklists/`. This file tracks the purchases ledger only.
 
+| — | Shopping: Parts To Buy | [shopping-parts.md](checklists/shopping-parts.md) | in-progress |
+
 | Phase | Checklist | Status |
 |---|---|---|
 | 1 — AI Server Build | [homelab-phase-1-ai-server.md](checklists/homelab-phase-1-ai-server.md) | in-progress |
