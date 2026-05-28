@@ -2,7 +2,7 @@
 
 Full bill of materials across all four machines. "Projected value" is approximate resale/replacement value for owned components.
 
-**Charts:** [Cost breakdown visualisations](charts/server-costs-pie.md)
+**Charts:** [Cost & power breakdown](charts/project-costs.md)
 
 ---
 
@@ -106,7 +106,7 @@ CX600 replaced by Corsair HX850i (€60, used). HX850i is Platinum, fully modula
 
 | Component | Status | Cost to Buy | Projected Value |
 |---|---|---:|---:|
-| Mini-ITX N100 board (4+ SATA, M.2) | **To buy** | €80-130 | ~€100 |
+| Mini-ITX N100/N305 board (10GbE, 6+ SATA, 2× M.2) | **To buy** | €150-250 | ~€150 |
 | Jonsbo N3 (8-bay 3.5", aluminum, ITX) | **To buy** | €90-120 | ~€100 |
 | PSU — see analysis below | **To buy** | €30-80 | - |
 | 16GB DDR4 SODIMM (2x8GB, from Wyse) | Owned (swapped) | - | ~€40 |
@@ -247,17 +247,118 @@ picoPSU-160-XT ships with 3–4× SATA power connectors, 2× Molex, 4-pin CPU EP
 
 ---
 
+## 10GbE Networking Upgrade
+
+Centralized LAN upgrade: Cat6A structured cabling in walls, 10GbE switch, NIC upgrades. NAS becomes centralized workspace storage accessible at ~1 GB/s locally and remotely via Fritz!Box WireGuard VPN.
+
+**Charts:** [Network topology](charts/network-topology.md) · [Cost breakdown](charts/networking-costs-pie.md) · [Timeline](charts/homelab-gantt.md)
+
+**Priority:** After NAS build (Phase 2). Cabling is labour-intensive and independent — NAS works on 2.5GbE (i226-V) in the interim.
+
+### Design Decisions
+
+- **Switch:** MikroTik CRS305-1G-4S+IN (fanless, 8W, managed) — silence and low power over convenience
+- **Transceivers:** 3× SFP+ to 10GBASE-T modules at switch end (one per Cat6A wall run)
+- **Cabling:** Cat6A S/FTP in wall channels to RJ45 keystone wall plates. Double runs per location ("open walls once")
+- **NAS board:** must have 10GbE onboard (Marvell AQC113 RJ45 or SFP+ direct)
+- **Fritz!Box stays as gateway:** layer-2 switch handles LAN-to-LAN; Fritz!Box remains firewall + WireGuard VPN terminator
+- **Wyse excluded:** thin variant (no PCIe slot), tasks don't need >1GbE
+
+### Topology
+
+```
+Internet → Fritz!Box (gateway/firewall/WireGuard) → 2.5GbE → MikroTik CRS305
+                                                                 ├─ SFP+ port 1 → NAS (10GbE)
+                                                                 ├─ SFP+ port 2 → AI Server (10GbE)
+                                                                 ├─ SFP+ port 3 → Desktop PC (10GbE)
+                                                                 └─ SFP+ port 4 → spare
+Fritz!Box 1GbE → Wyse 5070 (Caddy/AdGuard) + Fritz!Mesh (WiFi)
+```
+
+### NAS Board — Updated Requirements (10GbE)
+
+The NAS board requirement changes from 2.5GbE (€80-130) to 10GbE onboard (€150-250):
+
+| Spec | Requirement |
+|---|---|
+| Form factor | Mini-ITX (170×170mm) — fits Jonsbo N3 |
+| 10GbE | 1× RJ45 (Marvell AQC113) or SFP+ |
+| 2.5GbE | 1× (Intel i226-V) — management / fallback |
+| SATA | 6 minimum, 8 ideal |
+| M.2 | 2× NVMe (Key M, PCIe) |
+| RAM | 2× DDR4 SODIMM |
+| Power | 24-pin ATX (picoPSU compatible) — NOT 19V DC barrel |
+| CPU | Intel N100 or N305 |
+
+**PCIe lane budget (9 lanes, AQC113 on x1):**
+
+| Device | Lanes | Effective bandwidth |
+|---|---|---|
+| M.2 slot 1 — boot NVMe | x4 | 3.5 GB/s |
+| 10GbE NIC (AQC113) | x1 | 985 MB/s (≈7.9 Gbps) |
+| ASM1166 SATA 6-port | x2 | 1.97 GB/s |
+| M.2 slot 2 — ZFS SLOG | x1 | 985 MB/s |
+| 2.5GbE (i226-V) | x1 | 985 MB/s |
+| **Total** | **9** | ✓ fits exactly |
+
+AQC113 on PCIe 3.0 x1 caps at ~7.9 Gbps (not full 10). The 5-HDD RAIDZ1 peaks at ~400 MB/s (3.2 Gbps); NVMe L2ARC cache can serve ~985 MB/s. Acceptable trade-off — still 6× faster than 1GbE.
+
+### Component List
+
+| Component | Status | Cost |
+|---|---|---:|
+| MikroTik CRS305-1G-4S+IN (fanless, 8W) | **To buy** | ~€140 |
+| SFP+ 10GBASE-T transceiver × 3 (MikroTik S+RJ10 or compatible) | **To buy** | ~€90 (€30 each) |
+| Intel X540-T1 10GbE RJ45 NIC (AI server) | **To buy** | ~€30-50 |
+| Intel X540-T1 10GbE RJ45 NIC (Desktop PC) | **To buy** | ~€30-50 |
+| Cat6A S/FTP solid 23AWG, 100m reel | **To buy** | ~€80-110 |
+| Cat6A shielded keystone jacks × 12 | **To buy** | ~€36-60 |
+| 2-port wall plates × 5 | **To buy** | ~€15-25 |
+| 12-port Cat6A patch panel | **To buy** | ~€30-40 |
+| Cat6A patch cables (0.5m + 1m) × 10 | **To buy** | ~€40-50 |
+| Cable conduit / trunking ~30m | **To buy** | ~€30-60 |
+| RJ45 crimping tool + cable tester | **To buy** | ~€30-50 |
+| **Subtotal (networking)** | | **€550-765** |
+
+NAS board price increase (€150-250 vs €80-130 for 2.5GbE) adds ~€70-120 net. Already accounted in the NAS section above.
+
+### Power Analysis (24/7 operation)
+
+| Option | Total draw | Annual cost (€0.25/kWh) |
+|---|---|---|
+| MikroTik CRS305 + 3× transceiver (~20W) | 20W | ~€44/year |
+| TP-Link TL-SX105 (~35W, has fan) | 35W | ~€77/year |
+
+MikroTik saves ~€33/year. Transceivers (€90) pay back in ~3 years. Plus: fanless = silent.
+
+### Cabling Plan ("Open Walls Once")
+
+6 cable runs total (3 locations × 2 runs each for future-proofing):
+
+| Run | From | To | Length | Purpose |
+|---|---|---|---|---|
+| 1-2 | Patch panel | AI server room wall plate | ~15m each | Active + spare |
+| 3-4 | Patch panel | Desktop room wall plate | ~15m each | Active + spare |
+| 5-6 | Patch panel | Spare location wall plate | ~10m each | Future device |
+
+Double runs cost ~€50 extra in cable but avoid re-opening walls for link aggregation, VLAN separation, or new devices.
+
+---
+
 ## Summary: Total Spend Required
 
 | Machine | Already Spent | Still To Buy | Total New Spend |
 |---|---:|---:|---:|
 | Main PC | €0 | €160-180 | €160-180 |
-| AI Server | €1,178 | €136-167 | €1,314-1,345 |
-| NAS | €0 | €312-536 | €312-536 |
+| AI Server | €1,198 | €136-167 | €1,334-1,365 |
+| NAS | €0 | €392-656 | €392-656 |
+| 10GbE Networking | €0 | €550-765 | €550-765 |
 | Thin Client | €0 | €0 | €0 |
-| **Grand Total** | **€1,178** | **€608-883** | **€1,786-2,061** |
+| **Grand Total** | **€1,198** | **€1,238-1,768** | **€2,436-2,966** |
 
 **Offset from sales:** CX600 PSU (~€25-30 resale) reduces net spend slightly.
+
+**NAS board note:** the NAS "Still To Buy" now reflects the 10GbE board price (€150-250). The networking section's €550-765 covers switch, transceivers, NICs, and cabling — it does NOT double-count the board.
 
 ---
 
@@ -277,6 +378,7 @@ picoPSU-160-XT ships with 3–4× SATA power connectors, 2× Molex, 4-pin CPU EP
 
 1. **AI Server remaining parts** — Thermaltake Tower 300 (~€90-110)
 2. **Main PC PSU + riser** — be quiet! Straight Power 12 750W + PCIe riser cable (~€160-180); sell CX600
-3. **NAS build** — N100 board, Jonsbo N2, SF750 Platinum 2024, 1-2TB NVMe (~€400-600)
+3. **NAS build** — N100/N305 10GbE board, Jonsbo N3, picoPSU, 1-2TB NVMe (~€392-656)
+4. **10GbE Networking** — MikroTik switch, transceivers, NICs, Cat6A cabling (~€550-765). Independent of step 3 for purchasing; cabling scheduled after NAS is operational.
 
-Steps 1 and 2 are independent (AI server gets its own PSU). Step 3 can wait for deals on the N100 board.
+Steps 1 and 2 are independent (AI server gets its own PSU). Step 3 can wait for deals on the N100/N305 board. Step 4 is a year-long project — purchases spread over months, walls opened once when all materials are ready.

@@ -12,7 +12,7 @@
 
 ### Hardware Assembly
 
-- [ ] **N2.1** Acquire mini-ITX N100 board (4+ SATA, M.2 slot), 8-bay case (Jonsbo N3), and PSU (picoPSU-160-XT + 150W AC adapter).
+- [ ] **N2.1** Acquire mini-ITX N100/N305 board (10GbE onboard, 6+ SATA, 2× M.2), 8-bay case (Jonsbo N3), and PSU (picoPSU-160-XT + 150W AC adapter).
 - [ ] **N2.2** Install DDR4 SODIMMs (16GB from Wyse 5070 after RAM swap).
 - [ ] **N2.3** Install boot NVMe (1–2TB depending on deal).
 - [ ] **N2.4** Mount WD Red HDDs (3× 4TB) in case SATA bays.
@@ -44,7 +44,9 @@
 
 ## Notes
 
-- Items to buy: N100 board (~€80-130), Jonsbo N3 (~€90-120), picoPSU-160-XT + adapter (~€40-55), boot NVMe (~€100-200).
+- Items to buy: N100/N305 10GbE board (~€150-250), Jonsbo N3 (~€90-120), picoPSU-160-XT + adapter (~€40-55), boot NVMe (~€100-200).
+- NAS board must have 10GbE onboard (Marvell AQC113 or SFP+) for the Phase 7 networking upgrade. The 2.5GbE port (i226-V) serves as management/fallback during interim before 10GbE cabling is complete.
 - Phase 3 (thin client conversion) follows immediately after M2.7 is complete.
+- Phase 7 (10GbE networking) follows after NAS is operational — NAS uses 2.5GbE in the interim.
 - See [notes/thin-client-and-nas.md](../thin-client-and-nas.md) for architecture rationale and measurement plan.
 - See [notes/deployment-checklist.md](../deployment-checklist.md) for the purchases ledger.
