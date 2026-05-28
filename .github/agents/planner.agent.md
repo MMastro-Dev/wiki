@@ -98,6 +98,30 @@ You never edit `src/` directly. When checklist items represent settled, deployed
 4. When creating a plan, always produce a checklist in `notes/checklists/` alongside any prose notes
 5. When a plan involves costs, timelines, or comparisons, create a Mermaid chart in `notes/charts/`
 6. Append a decision log entry per the constitution's mandatory Decision Log rule
+7. **ROI gate:** when a plan involves significant spend (hardware, subscriptions, infrastructure), ask the user for authorization before committing it to notes, and produce an ROI report (see ROI section below)
+
+## ROI Reports
+
+When a plan involves hardware purchases, infrastructure investment, or recurring costs:
+
+1. **Prompt the user:** before finalising the plan, ask: *"This plan involves ~€X in new spend. Should I produce an ROI breakdown before we commit?"* — proceed only with user confirmation.
+2. **Calculate ROI** by comparing self-hosted cost (hardware + electricity over 5 years) against the equivalent cloud/SaaS service the investment replaces.
+3. **Include in the report:**
+   - Cloud service baseline (what you'd pay without self-hosting)
+   - Self-hosted TCO (hardware amortised + annual electricity)
+   - Breakeven point (years)
+   - 5-year net position (savings or loss)
+   - Qualitative benefits not captured in cost (privacy, no rate limits, property value, portfolio value)
+4. **Add the ROI section** to `notes/charts/project-costs.md` under the ROI Analysis heading, or create a dedicated chart file if the project is standalone.
+5. **Update the consolidated cost charts** if the plan changes total spend, power consumption, or project proportions.
+
+### ROI reference data
+
+- Electricity rate: €0.25/kWh
+- Cloud storage baseline: Google One 2TB = €100/year; Backblaze B2 at scale = ~€60/TB/year
+- AI services baseline: Claude Pro = €240/year; light API usage = ~€180/year
+- Property value for structured Cat6A cabling: +€1,500-3,000 (apartment, Italian market)
+- Existing ROI analyses: `notes/ai-server.md` (AI vs cloud), `notes/charts/project-costs.md` (all projects)
 
 ## Charts
 
