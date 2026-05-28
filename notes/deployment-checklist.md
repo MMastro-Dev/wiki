@@ -12,7 +12,7 @@ See [infrastructure.md](infrastructure.md) for architecture context, [thin-clien
 | 4GB DDR4 SODIMM PC4-2666V | -€10 | ✅ Acquired |
 | 2x 8GB DDR3 SODIMM (sold) | +€20 | ✅ Done |
 | Corsair VS550 PSU (sold) | +€20 | ✅ Done |
-| GPU thermal mod (Gelid pads, MX-7, fan, bracket) | -€130 | ✅ Acquired |
+| GPU thermal mod (heatsink, thermal pads, thermal paste) | -€150 | ✅ Done |
 | AI server PSU (Corsair HX1000i 1000W, used) | -€110 | ✅ Acquired |
 | NAS mini-ITX board (N100) | -€80-130 | ⬜ Pending |
 | NAS case (Jonsbo N2) | -€70-90 | ⬜ Pending |

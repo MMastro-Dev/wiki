@@ -14,8 +14,8 @@
 - [ ] **H1.2** Install Ryzen 5 3600X into B450M-A PRO MAX.
 - [ ] **H1.3** Install 32GB DDR4 (2x16GB DIMM, slots A2+B2 for dual-channel).
 - [ ] **H1.4** Install 512GB NVMe into M.2 slot.
-- [ ] **H1.5** Mount GPU with stock Zotac Trinity cooler. Apply new thermal paste (Arctic MX-7). Replace rear VRAM pads (Gelid Ultimate). Attach backplate fan (Arctic P12 Slim PWM + Phanteks bracket).
-- [ ] **H1.6** Install GPU (PCIe 3.0 x16). Connect 2x 8-pin PCIe power.
+- [x] **H1.5** GPU thermal mod applied — heatsink (€100), thermal pads (€40), thermal paste (€10). Video output confirmed and stress test passed. *(2026-05-28)*
+- [ ] **H1.6** Mount modded GPU in case (PCIe 3.0 x16). Connect 2x 8-pin PCIe power.
 - [ ] **H1.7** Connect PSU (24-pin ATX + 8-pin CPU), case fans, front panel.
 - [ ] **H1.8** Boot test: BIOS, confirm CPU/RAM/NVMe detected, set XMP, set boot order.
 
@@ -59,7 +59,8 @@
 
 ## Notes
 
-- Parts acquired: RTX 3090 (€765), GPU thermal mod kit (€130), Corsair HX1000i (€110), 32GB DDR4 (€130), Samsung PM981 500GB NVMe (€43).
+- Parts acquired: RTX 3090 (€765), GPU thermal mod (€150 — heatsink, thermal pads, thermal paste), Corsair HX1000i (€110), 32GB DDR4 (€130), Samsung PM981 500GB NVMe (€43).
+- GPU thermal mod complete and tested (video output + stress test, 2026-05-28).
 - Still to buy: Thermaltake Tower 300 case (~€90-110), Arctic P14 PWM 5-pack (~€30-35), Arctic P12 Slim PWM (~€8-10), Phanteks Universal Fan Bracket (~€8-12).
 - H1.1 is blocked until the Tower 300 is purchased.
 - See [notes/ai-server.md](../ai-server.md) for full GPU choice rationale and thermal mod plan.

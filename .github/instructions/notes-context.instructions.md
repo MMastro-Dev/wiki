@@ -21,6 +21,7 @@ applyTo: 'notes/**'
 - `wiki-guide.md` — map of the `src/` wiki structure
 - `decisions/` — append-only decision log (see `decisions/README.md`)
 - `checklists/` — step-by-step actionable checklists for plans (see planner agent for format)
+- `charts/` — Mermaid diagrams (pie, gantt, flowchart) for visual planning; merged into wiki pages by the Wiki Editor during promotion
 
 ## Conventions
 

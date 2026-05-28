@@ -2,6 +2,8 @@
 
 Full bill of materials across all four machines. "Projected value" is approximate resale/replacement value for owned components.
 
+**Charts:** [Cost breakdown visualisations](charts/server-costs-pie.md)
+
 ---
 
 ## Main PC (Gaming / Desktop)
@@ -84,7 +86,7 @@ CX600 replaced by Corsair HX850i (€60, used). HX850i is Platinum, fully modula
 | Ryzen 5 3600X | Owned | - | ~€80 |
 | MSI B450M-A PRO MAX (mATX) | Owned | - | ~€50 |
 | RTX 3090 24GB (Zotac Trinity, stock cooler) | Acquired | €765 | ~€765 |
-| GPU thermal mod (Gelid pads, Arctic MX-7, fan, bracket) | Acquired | €130 | ~€130 |
+| GPU thermal mod (heatsink, thermal pads, thermal paste) | ✅ Done | €150 | ~€150 |
 | Corsair HX1000i 1000W (used, 80+ Platinum) | Acquired | €110 | ~€110 |
 | 32GB DDR4 3200MHz S3+ DragonHeart XMP (2x16GB DIMM) | ✅ Acquired | €130 | ~€130 |
 | Samsung PM981 500GB NVMe Gen3 | ✅ Acquired | €43 | ~€43 |
@@ -93,9 +95,9 @@ CX600 replaced by Corsair HX850i (€60, used). HX850i is Platinum, fully modula
 | Arctic P12 Slim PWM (backplate fan) | **To buy** | €8-10 | - |
 | Phanteks Universal Fan Bracket (backplate mount) | **To buy** | €8-12 | - |
 | **Subtotal (to buy)** | | **€136-167** | |
-| **Already spent** | | **€1,178** | |
-| **Total build cost** | | **€1,314-1,345** | |
-| **Total system value** | | | **~€1,395** |
+| **Already spent** | | **€1,198** | |
+| **Total build cost** | | **€1,334-1,365** | |
+| **Total system value** | | | **~€1,415** |
 
 
 ---

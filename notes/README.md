@@ -23,6 +23,7 @@ This directory contains planning documents for the homelab expansion. The wiki i
 |---|---|
 | [decisions/](decisions/) | Append-only decision log, one file per date |
 | [checklists/](checklists/) | Step-by-step actionable checklists for plans in progress |
+| [charts/](charts/) | Mermaid diagrams (pie, gantt, flowchart) for visual planning; merged into wiki by the Wiki Editor |
 
 ## How Notes Relate to the Wiki
 

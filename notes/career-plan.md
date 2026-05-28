@@ -4,6 +4,8 @@
 **Last updated:** April 22, 2026
 **Target:** AI / automation / platform engineering with a Solution Architect trajectory, remote-first, leveraging 5+ years of production frontend experience as a foundation.
 
+**Charts:** [Career timeline gantt](charts/career-gantt.md)
+
 ---
 
 ## 1. Pivot summary
