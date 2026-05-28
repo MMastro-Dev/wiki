@@ -22,7 +22,7 @@
 
 ### Visibility
 
-- [ ] Configure actual GitHub pinned repos (6-card grid; lead with `website`, then `mastrodocs`)
+- [x] Configure actual GitHub pinned repos (6-card grid; lead with `website`, then `mastrodocs`)
 - [ ] Update wiki homepage text — drop "Admin auth — LAN/VPN access only", replace with public-wiki intro
 - [ ] CV rewrite: new positioning statement, Projects section featuring homelab and C+D, impact-oriented bullets on each role
 - [ ] LinkedIn: update headline → `Frontend Developer → AI & Platform Engineering | React · TypeScript · Python | Open to remote`
@@ -38,8 +38,8 @@
 
 ### Certifications (this week)
 
-- [ ] Enrol in LFD121 — Developing Secure Software (Linux Foundation, free)
-- [ ] Register AI-200 exam with employer (confirm beta voucher workflow)
+- [x] Enrol in LFD121 — Developing Secure Software (Linux Foundation, free)
+- [x] Register AI-200 exam with employer (confirm beta voucher workflow)
 
 ### Deferred
 

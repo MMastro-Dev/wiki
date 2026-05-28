@@ -8,10 +8,10 @@
 
 ## Steps
 
-- [ ] Add a proper README to the `website` repo — what it does, stack, deploy pipeline reference
+- [x] Add a proper README to the `website` repo — what it does, stack, deploy pipeline reference
 - [ ] Use **TanStack Query** for any data fetching (blog metadata, GitHub stats, service health indicators)
 - [ ] Add at least one **interactive element** beyond static links (filterable project cards, service health dots, animated sections)
-- [ ] Reference Gitea CI/CD pipeline in the README (link to workflow file or describe the deploy trigger)
+- [x] Reference Gitea CI/CD pipeline in the README (link to workflow file or describe the deploy trigger)
 
 ---
 

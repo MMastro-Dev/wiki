@@ -1,2 +1,5 @@
 # mdBook build output
 book/
+
+# Ignore Obsidian vault files
+.obsidian/

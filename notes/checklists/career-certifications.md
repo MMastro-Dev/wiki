@@ -10,13 +10,13 @@
 
 ### 2026 Q2–Q3 (free + employer-sponsored)
 
-- [ ] **LFD121 — Developing Secure Software** (Linux Foundation, free) — enrol immediately, run alongside AI-200 prep
+- [ ] **LFD121 — Developing Secure Software** (Linux Foundation, free) — enroll immediately, run alongside AI-200 prep
 - [ ] **AI-200 — Azure AI Cloud Developer Associate** (employer-sponsored) — target Jun–Jul 2026
 
 ### 2026 Q3–Q4
 
-- [ ] **AZ-104 — Azure Administrator** (employer-sponsored) — prereq for AZ-305; confirm sponsorship before registering
-- [ ] **NCA-GENL — NVIDIA Certified Associate: Generative AI and LLMs** (self-fund, ~$135) — vendor-neutral LLM/RAG/prompt-engineering signal; recognised beyond continental Europe
+- [ ] **AZ-104 — Azure Administrator** (employer-sponsored) — pre-req for AZ-305; confirm sponsorship before registering
+- [ ] **NCA-GENL — NVIDIA Certified Associate: Generative AI and LLMs** (self-fund, ~$135) — vendor-neutral LLM/RAG/prompt-engineering signal; recognized beyond continental Europe
 
 ### 2027 H1
 

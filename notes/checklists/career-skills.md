@@ -10,14 +10,14 @@
 
 ### TypeScript depth
 
-- [ ] Master advanced patterns: generics, conditional types, discriminated unions, template literal types
-- [ ] Maintain `strict: true` and zero `any` in all new projects
-- [ ] Complete relevant Total TypeScript modules (Matt Pocock)
+- [x] Master advanced patterns: generics, conditional types, discriminated unions, template literal types
+- [x] Maintain `strict: true` and zero `any` in all new projects
+- [x] Complete relevant Total TypeScript modules (Matt Pocock)
 
 ### Frontend system design
 
-- [ ] Study component architecture patterns (compound components, render props, custom hooks)
-- [ ] Study design systems: token-based design, component library API versioning
+- [x] Study component architecture patterns (compound components, render props, custom hooks)
+- [x] Study design systems: token-based design, component library API versioning
 - [ ] Study state management strategy: when Redux earns its complexity vs Zustand/Context vs React Query
 - [ ] Practice 2–3 system design questions from GreatFrontend or equivalent
 
@@ -29,13 +29,13 @@
 ### FastAPI depth
 
 - [ ] SQLAlchemy 2.0 (async), Pydantic v2, background tasks
-- [ ] Structured LLM output parsing (function calling, JSON schema enforcement)
+- [x] Structured LLM output parsing (function calling, JSON schema enforcement)
 - [ ] Alembic migrations, dependency injection patterns
 
 ### LLM / AI patterns
 
 - [ ] RAG: embeddings, vector stores (pgvector), chunking strategies
-- [ ] Prompt engineering: few-shot, chain-of-thought, structured output
+- [x] Prompt engineering: few-shot, chain-of-thought, structured output
 - [ ] Agent orchestration basics (LangGraph or raw implementation)
 
 ### Performance and observability

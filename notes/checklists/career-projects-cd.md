@@ -10,21 +10,21 @@
 
 ### FastAPI backend (Project C core)
 
-- [ ] Scaffold FastAPI service — `src/api/agents` and `src/api/cv-match`, PostgreSQL + SQLAlchemy + Alembic migrations
+- [x] Scaffold FastAPI service — `src/api/agents` and `src/api/cv-match`, PostgreSQL + SQLAlchemy + Alembic migrations
 - [ ] Add background task structure (Celery or FastAPI BackgroundTasks)
-- [ ] Add a typed API client from the frontend (discriminated unions for response states)
+- [x] Add a typed API client from the frontend (discriminated unions for response states)
 
 ### AI / LLM integration
 
-- [ ] Integrate Anthropic or OpenAI API — one working LLM-backed endpoint
-- [ ] **Phase 1 gate: single job post + CV → JSON comparison output** — ship this before adding anything else
+- [x] Integrate Anthropic or OpenAI API — one working LLM-backed endpoint
+- [x] **Phase 1 gate: single job post + CV → JSON comparison output** — ship this before adding anything else
 - [ ] Build RAG pipeline or structured prompt workflow (Phase 2+)
 - [ ] Phase 2: ranking across multiple job posts
 
 ### CV matching feature (Project D)
 
-- [ ] Build a React form on `mmastro.dev` to submit a job posting
-- [ ] Wire to FastAPI `/cv-match` endpoint (async polling, loading/error states)
+- [x] Build a React form on `mmastro.dev` to submit a job posting
+- [x] Wire to FastAPI `/cv-match` endpoint (async polling, loading/error states)
 - [ ] Generate a tailored CV committed as a Hugo markdown file to Gitea
 - [ ] Trigger Gitea CI/CD to publish result at `cv.mmastro.dev/[identifier]`
 
