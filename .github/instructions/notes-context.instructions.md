@@ -16,6 +16,8 @@ applyTo: 'notes/**'
 - `deployment-checklist.md` — phase-by-phase tasks and purchases ledger
 - `shopping-list.md` — full bill of materials across all machines
 - `cv-ai-benchmark.md` — CV/AI experiments and analysis
+- `career-plan.md` — career plan: target role (AI/platform/architect), phases, certs, priority actions, success criteria
+- `career-changelog.md` — evolution log tracking changes between career roadmap versions
 - `wiki-guide.md` — map of the `src/` wiki structure
 - `decisions/` — append-only decision log (see `decisions/README.md`)
 

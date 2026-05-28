@@ -14,6 +14,8 @@ This directory contains planning documents for the homelab expansion. The wiki i
 | [deployment-checklist.md](deployment-checklist.md) | Step-by-step deployment tasks across all phases |
 | [wiki-guide.md](wiki-guide.md) | Map of the wiki in `src/` — what each file covers, how services are documented |
 | [cv-ai-benchmark.md](cv-ai-benchmark.md) | Reference output for CV-AI agent quality benchmarking |
+| [career-plan.md](career-plan.md) | Career plan: target role, phases, certifications, priority actions, success criteria |
+| [career-changelog.md](career-changelog.md) | Evolution log tracking changes between career roadmap versions |
 
 ## How Notes Relate to the Wiki
 
