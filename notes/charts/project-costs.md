@@ -9,12 +9,12 @@ Consolidated cost and power charts for the full homelab infrastructure. Data sou
 
 ## Grand Total Overview
 
-Total homelab investment: **~€2,700** (midpoint of €2,436–2,966 range).
+Total homelab investment: **~€2,540** (midpoint of €2,382–2,702 range).
 
 ```mermaid
-pie title Total Homelab Investment (~€2,700)
+pie title Total Homelab Investment (~€2,540)
     "Already Spent (€1,198)" : 1198
-    "Still To Buy (~€1,500)" : 1500
+    "Still To Buy (~€1,340)" : 1340
 ```
 
 ---
@@ -26,12 +26,12 @@ How the total budget divides across the four build projects.
 ```mermaid
 pie title Cost Share by Project
     "AI Server (€1,350)" : 1350
-    "NAS Build (€525)" : 525
-    "10GbE Networking (€660)" : 660
+    "NAS Build (€545)" : 545
+    "10GbE Networking (€476)" : 476
     "Main PC (€170)" : 170
 ```
 
-> Thin Client omitted (€0 new spend). NAS includes 10GbE board cost; networking covers switch, NICs, cabling only (no double-counting).
+> Thin Client omitted (€0 new spend). NAS includes CWWK board + ConnectX-3 NIC; networking covers switch, NICs for AI server + Desktop, fiber, and DAC cable.
 
 ---
 
@@ -56,14 +56,15 @@ pie title AI Server — Component Cost (€1,350)
 
 ## NAS — Component Breakdown
 
-Total build: ~€525 (midpoint). All to buy.
+Total build: ~€545 (midpoint). All to buy.
 
 ```mermaid
-pie title NAS — Component Cost (~€525)
-    "N100/N305 10GbE Board" : 200
+pie title NAS — Component Cost (~€545)
+    "CWWK i5-8265UES 8-Bay Board" : 145
+    "Mellanox ConnectX-3 NIC" : 20
     "Jonsbo N3 Case" : 105
     "picoPSU + AC Adapter" : 48
-    "Boot NVMe (1-2TB)" : 100
+    "Boot NVMe (1-2TB)" : 150
     "ZFS Cache NVMe" : 50
     "Noctua Fans (2×)" : 34
 ```
@@ -74,18 +75,18 @@ pie title NAS — Component Cost (~€525)
 
 ## 10GbE Networking — Component Breakdown
 
-Total: ~€660 (midpoint of €550–765).
+Total: ~€476 (midpoint of €431–521).
 
 ```mermaid
-pie title 10GbE Networking — Cost Breakdown (~€660)
+pie title 10GbE Networking — Cost Breakdown (~€476)
     "MikroTik CRS305 Switch" : 140
-    "SFP+ Transceivers (3×)" : 90
-    "NICs — 2× Intel X540-T1" : 80
-    "Cat6A Cable (100m)" : 95
-    "Keystones + Plates + Panel" : 80
-    "Conduit + Trunking" : 45
-    "Patch Cables" : 45
-    "Tools (crimper + tester)" : 40
+    "Mellanox ConnectX-3 NICs (2×)" : 40
+    "10G-SR SFP+ Transceivers (4×)" : 32
+    "OM4 Fiber Cables (4-6 runs)" : 75
+    "DAC 1m Cable (NAS)" : 10
+    "LC Keystones + Plates + Panel" : 80
+    "Patch Cables + Conduit" : 53
+    "Cat6 Patch (Fritz!Box uplink)" : 3
 ```
 
 ---
@@ -106,17 +107,18 @@ pie title Main PC — Remaining Cost (~€170)
 
 ## Power Consumption — Sustained Load (All 24/7 Devices)
 
-Total 24/7 draw at typical sustained load: ~**165W**.
+Total 24/7 draw at typical sustained load: ~**163W**.
 
 ```mermaid
-pie title Power Draw — Sustained (165W total)
+pie title Power Draw — Sustained (163W total)
     "AI Server (idle, no inference)" : 80
-    "NAS (drives active)" : 52
-    "MikroTik Switch + Transceivers" : 20
+    "NAS (drives active)" : 54
+    "MikroTik Switch (fiber direct)" : 8
     "Wyse 5070 (gateway)" : 15
+    "Fritz!Box 5530 + CIG ONT" : 6
 ```
 
-> AI Server at idle (no inference running). During inference bursts the 3090 adds 150–320W (total system 230–400W), but these are intermittent. Main PC not shown (not 24/7).
+> AI Server at idle (no inference running). During inference bursts the 3090 adds 150–320W (total system 230–400W), but these are intermittent. CRS305 draws ~8W with direct fiber (vs ~20W with 3× 10GBASE-T transceivers). Main PC not shown (not 24/7).
 
 ---
 

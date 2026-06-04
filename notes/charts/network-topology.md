@@ -10,25 +10,27 @@ Planned network structure after the 10GbE upgrade. Data sourced from [notes/shop
 
 ```mermaid
 flowchart TD
-    Internet["Internet (1 Gbps fibre)"]
-    FritzBox["Fritz!Box\n(Gateway / Firewall / WireGuard VPN)"]
+    ONT["CIG G-97CP ONT\n(external, 1-2W)"]
+    FritzBox["Fritz!Box 5530\n(Gateway / Firewall / WireGuard VPN)"]
     Switch["MikroTik CRS305-1G-4S+IN\n(4× SFP+ / 1× 1GbE / fanless 8W)"]
-    NAS["NAS\n(N100/N305, 10GbE onboard)\nCentralized Storage"]
-    AI["AI Server\n(Ryzen 3600X + RTX 3090)\nIntel X540-T1 10GbE"]
-    Desktop["Desktop PC\n(Ryzen 7800X3D)\nIntel X540-T1 10GbE"]
+    NAS["NAS\n(CWWK i5-8265UES, ConnectX-3 SFP+)\nCentralized Storage"]
+    AI["AI Server\n(Ryzen 3600X + RTX 3090)\nConnectX-3 SFP+ 10GbE"]
+    Desktop["Desktop PC\n(Ryzen 7800X3D)\nConnectX-3 SFP+ 10GbE"]
     Wyse["Wyse 5070 Thin\n(Caddy / AdGuard / oauth2-proxy)\n1GbE onboard"]
     Mesh["Fritz!Mesh Repeaters\n(WiFi devices)"]
     VPN["WireGuard VPN Clients\n(remote access)"]
 
-    Internet -->|"fibre ONT"| FritzBox
+    Internet["Internet (1 Gbps fibre GPON)"]
+    Internet -->|"GPON"| ONT
+    ONT -->|"1GbE"| FritzBox
     VPN -->|"WireGuard tunnel"| FritzBox
-    FritzBox -->|"2.5GbE auto-neg\n(1GbE port)"| Switch
+    FritzBox -->|"1GbE"| Switch
     FritzBox -->|"1GbE"| Wyse
     FritzBox -->|"WiFi mesh"| Mesh
 
-    Switch -->|"SFP+ port 1\n+ 10GBASE-T transceiver\n→ Cat6A in wall"| NAS
-    Switch -->|"SFP+ port 2\n+ 10GBASE-T transceiver\n→ Cat6A in wall"| AI
-    Switch -->|"SFP+ port 3\n+ 10GBASE-T transceiver\n→ Cat6A in wall"| Desktop
+    Switch -->|"SFP+ 1\n1m DAC or OM4 fiber"| NAS
+    Switch -->|"SFP+ 2\nOM4 fiber → wall → 10G-SR transceiver"| AI
+    Switch -->|"SFP+ 3\nOM4 fiber → wall → 10G-SR transceiver"| Desktop
 
     NAS -.->|"NFS (models, datasets)"| AI
     NAS -.->|"SMB3 (workspace storage)"| Desktop
@@ -42,14 +44,15 @@ flowchart TD
 ```mermaid
 flowchart LR
     subgraph "Internet Perimeter"
-        FW["Fritz!Box\nNAT + Firewall + WireGuard"]
+        ONT["CIG G-97CP ONT"]
+        FW["Fritz!Box 5530\nNAT + Firewall + WireGuard"]
     end
 
-    subgraph "10GbE LAN (Layer 2)"
-        SW["MikroTik CRS305\n(unmanaged switching)"]
-        NAS["NAS — 10GbE"]
-        AI["AI Server — 10GbE"]
-        PC["Desktop — 10GbE"]
+    subgraph "10GbE LAN (Layer 2 — SFP+ fiber)"
+        SW["MikroTik CRS305\n(direct fiber, 8W)"]
+        NAS["NAS — ConnectX-3 SFP+"]
+        AI["AI Server — ConnectX-3 SFP+"]
+        PC["Desktop — ConnectX-3 SFP+"]
     end
 
     subgraph "1GbE Segment"
@@ -57,7 +60,8 @@ flowchart LR
         WiFi["Fritz!Mesh — WiFi"]
     end
 
-    FW -->|"2.5G uplink"| SW
+    ONT -->|"1GbE"| FW
+    FW -->|"1GbE"| SW
     FW -->|"1GbE"| Wyse
     FW -->|"WiFi"| WiFi
     SW --- NAS
@@ -67,38 +71,38 @@ flowchart LR
 
 ---
 
-## Cabling Plan (Cat6A Structured — "Open Walls Once")
+## Cabling Plan (OM4 Fiber — "Open Walls Once")
 
 ```mermaid
 flowchart TD
     subgraph "Network Cabinet (Fritz!Box + Switch + NAS)"
-        PP["12-port Patch Panel"]
+        PP["12-port Fiber Patch Panel"]
         SW["MikroTik CRS305"]
-        NAS["NAS (short patch)"]
+        NAS["NAS (DAC 1m direct to SW)"]
     end
 
     subgraph "AI Server Room"
-        WP1["Wall Plate (2-port)"]
-        AI["AI Server"]
+        WP1["Wall Plate (2-port LC)"]
+        AI["AI Server\n10G-SR transceiver + ConnectX-3"]
     end
 
     subgraph "Desktop Room"
-        WP2["Wall Plate (2-port)"]
-        PC["Desktop PC"]
+        WP2["Wall Plate (2-port LC)"]
+        PC["Desktop PC\n10G-SR transceiver + ConnectX-3"]
     end
 
-    subgraph "Spare Locations"
-        WP3["Wall Plate (2-port)\n(future device)"]
+    subgraph "Spare Location"
+        WP3["Wall Plate (2-port LC)\n(future device)"]
     end
 
-    PP -->|"Cat6A run 1 (~15m)"| WP1
-    PP -->|"Cat6A run 2 (spare)"| WP1
-    PP -->|"Cat6A run 3 (~15m)"| WP2
-    PP -->|"Cat6A run 4 (spare)"| WP2
-    PP -->|"Cat6A run 5 (~10m)"| WP3
-    PP -->|"Cat6A run 6 (spare)"| WP3
-    SW -->|"patch cables"| PP
-    NAS -->|"1m patch"| PP
-    WP1 -->|"patch"| AI
-    WP2 -->|"patch"| PC
+    PP -->|"OM4 run 1 (measured length)"| WP1
+    PP -->|"OM4 run 2 (spare)"| WP1
+    PP -->|"OM4 run 3 (measured length)"| WP2
+    PP -->|"OM4 run 4 (spare)"| WP2
+    PP -->|"OM4 run 5 (measured length)"| WP3
+    PP -->|"OM4 run 6 (spare)"| WP3
+    SW -->|"0.5m LC patch cables"| PP
+    NAS -->|"1m DAC direct"| SW
+    WP1 -->|"0.5m LC patch"| AI
+    WP2 -->|"0.5m LC patch"| PC
 ```

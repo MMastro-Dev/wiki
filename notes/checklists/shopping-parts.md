@@ -25,14 +25,15 @@ Priority: these unlock Phase 1 assembly (H1.1 is blocked until the Tower 300 is 
 
 All items required before NAS build can begin. PSU and NVMe have options — see notes.
 
-- [ ] **N1** Mini-ITX N100/N305 board (10GbE onboard, 6+ SATA, 2× M.2) — €150-250. Must have 24-pin ATX (picoPSU compatible). Marvell AQC113 RJ45 or SFP+ for 10GbE. Search: CWWK, Topton, Kingnovy on AliExpress.
+- [ ] **N1** CWWK i5-8265UES 8-Bay NAS board (~$155 / €145 DDP from cwwk.net). Intel i5-8265U, 8× native SATA, 2× M.2 PCIe x4, 2× DDR4 SODIMM, 24-pin ATX, 2.5GbE onboard.
+- [ ] **N1b** Mellanox ConnectX-3 MCX311A-XCAT SFP+ NIC (~€20 used, eBay). `mlx4` mainline Linux driver. For 10GbE SFP+ connection to CRS305 in Phase 7.
 - [ ] **N2** Jonsbo N3 case (8-bay 3.5", aluminium, ITX) — €90-120
 - [ ] **N3** PSU — recommended: picoPSU-160-XT + 150W AC adapter (~€40-55 total). If expanding to 8 drives later, use 200W adapter. SFX alternative: Corsair SF450 Platinum (~€90-110, SFX ≤105mm only — SFX-L does NOT fit).
 - [ ] **N4** Boot NVMe (M.2 slot 1, PCIe x4) — 1TB (~€100) or 2TB (~€200)
 - [ ] **N5a** ZFS cache NVMe (M.2 slot 2, PCIe x1/x2) — ~500GB, ~€40-60. Acts as SLOG (sync write cache) — dramatically improves Immich uploads and Paperless ingestion.
 - [ ] **N5b** Noctua NF-A10x25 PWM 100mm — ×2 (HDD airflow) — €32-36
 
-**Subtotal:** €352-596
+**Subtotal:** €457-636
 
 ---
 
@@ -53,12 +54,13 @@ One decision pending before purchasing. See notes.
 
 ## Notes
 
-- GPU thermal mod is complete (€150 spent 2026-05-28, video output confirmed, stress test passed).
+- NAS board decided: CWWK i5-8265UES 8-Bay (~€145). 8 native SATA + 2× M.2 PCIe x4, DDR4 SODIMM. Reuses 16GB DDR4 from Wyse at zero cost.
+- NAS NIC: Mellanox ConnectX-3 SFP+ (~€20 used) for 10GbE fiber connection to CRS305 in Phase 7.
 - All other AI server parts already acquired; only the case and fans remain.
 - NAS build depends on Phase 1 (AI server) being live first — see [homelab-phase-2-nas-build.md](homelab-phase-2-nas-build.md).
 - Thin client (Wyse 5070) requires no new purchases.
 - 16GB DDR4 SODIMM currently in the Wyse 5070 will move to the NAS once the NAS is built — do not buy separate NAS RAM.
-- 10GbE networking purchases are independent (can buy anytime). Cabling waits until ALL materials are on-hand — "open walls once."
+- 10GbE networking uses OM4 fiber + SFP+ direct (no Cat6A, no 10GBASE-T transceivers). Measure wall runs before ordering fiber. "Open walls once" rule applies.
 
 ---
 
@@ -67,14 +69,16 @@ One decision pending before purchasing. See notes.
 Priority: after NAS build. Purchases can begin independently. Do NOT start cabling until all items arrive ("open walls once" rule).
 
 - [ ] **NET1** MikroTik CRS305-1G-4S+IN (fanless, 8W, 4× SFP+ + 1× 1GbE) — ~€140
-- [ ] **NET2** SFP+ 10GBASE-T transceiver modules × 3 (MikroTik S+RJ10 or compatible) — ~€90 (€30 each)
-- [ ] **NET3** Intel X540-T1 10GbE RJ45 NIC (AI server, PCIe x4) — ~€30-50 used
-- [ ] **NET4** Intel X540-T1 10GbE RJ45 NIC (Desktop PC, PCIe x4) — ~€30-50 used
-- [ ] **NET5** Cat6A S/FTP solid copper cable, 100m reel — ~€80-110
-- [ ] **NET6** Cat6A shielded keystone jacks × 12 — ~€36-60
-- [ ] **NET7** 2-port wall plates × 5 + 12-port patch panel — ~€45-65
-- [ ] **NET8** Cat6A patch cables (0.5m + 1m) × 10 — ~€40-50
+- [ ] **NET2** Mellanox ConnectX-3 MCX311A-XCAT SFP+ NIC × 2 (AI server + Desktop, used eBay) — ~€40 (€20 each)
+- [ ] **NET3** 10G-SR OM4 SFP+ transceiver × 4 (NIC ends: 2× AI server + Desktop, 1× NAS if wall run, used eBay) — ~€32 (€8 each)
+- [ ] **NET4** DAC 1m SFP+ twinax cable (NAS ↔ CRS305 if co-located) — ~€10
+- [ ] **NET5** Pre-terminated OM4 LC-LC duplex fiber, 4-6 runs — **measure wall runs first**, then order from FS.com to exact length + 1-2m slack (~€15/run = ~€60-90)
+- [ ] **NET6** LC duplex fiber keystone adapters × 12 — ~€36 (€3 each)
+- [ ] **NET7** Wall plates (2-port) × 5 + 12-port fiber patch panel — ~€60-80
+- [ ] **NET8** LC-LC duplex patch cables (0.5m) × 6 (switch-side panel connections) — ~€20
 - [ ] **NET9** Cable conduit / trunking ~30m — ~€30-60
-- [ ] **NET10** Tools: RJ45 crimper + punchdown tool + cable tester — ~€30-50
+- [ ] **NET10** Cat6 patch cable × 1 short (Fritz!Box → switch 1GbE) — ~€3
 
-**Subtotal (networking):** €550-765
+**Subtotal (networking):** €431-521
+
+> No crimping tools, no Cat6A reel, no 10GBASE-T transceivers — fiber plugs directly into SFP+ ports. NET5 must be last purchase after measuring runs.
