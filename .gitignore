@@ -3,3 +3,5 @@ book/
 
 # Ignore Obsidian vault files
 .obsidian/
+
+prompts/*

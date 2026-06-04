@@ -12,7 +12,7 @@
 
 ### Hardware Assembly
 
-- [ ] **N2.1** Acquire mini-ITX N100/N305 board (10GbE onboard, 6+ SATA, 2× M.2), 8-bay case (Jonsbo N3), and PSU (picoPSU-160-XT + 150W AC adapter).
+- [ ] **N2.1** Acquire CWWK i5-8265UES 8-Bay board (~$155), Mellanox ConnectX-3 MCX311A-XCAT SFP+ NIC (~€20 used, eBay), Jonsbo N3 case (~€90-120), and PSU (picoPSU-160-XT + 150W AC adapter).
 - [ ] **N2.2** Install DDR4 SODIMMs (16GB from Wyse 5070 after RAM swap).
 - [ ] **N2.3** Install boot NVMe (1–2TB depending on deal).
 - [ ] **N2.4** Mount WD Red HDDs (3× 4TB) in case SATA bays.
@@ -44,8 +44,8 @@
 
 ## Notes
 
-- Items to buy: N100/N305 10GbE board (~€150-250), Jonsbo N3 (~€90-120), picoPSU-160-XT + adapter (~€40-55), boot NVMe (~€100-200).
-- NAS board must have 10GbE onboard (Marvell AQC113 or SFP+) for the Phase 7 networking upgrade. The 2.5GbE port (i226-V) serves as management/fallback during interim before 10GbE cabling is complete.
+- Items to buy: CWWK i5-8265UES 8-Bay board (~$155 / €145), Mellanox ConnectX-3 MCX311A-XCAT SFP+ NIC (~€20 used), Jonsbo N3 (~€90-120), picoPSU-160-XT + adapter (~€40-55), boot NVMe (~€100-200). Total board+NIC: ~€165-170 DDP.
+- 10GbE via ConnectX-3 SFP+ card — connects to MikroTik CRS305 via DAC cable (if co-located) or OM4 fiber in Phase 7. `mlx4` driver in mainline Linux kernel, zero driver setup on Debian. Onboard 2.5GbE serves as management/fallback.
 - Phase 3 (thin client conversion) follows immediately after M2.7 is complete.
 - Phase 7 (10GbE networking) follows after NAS is operational — NAS uses 2.5GbE in the interim.
 - See [notes/thin-client-and-nas.md](../thin-client-and-nas.md) for architecture rationale and measurement plan.
